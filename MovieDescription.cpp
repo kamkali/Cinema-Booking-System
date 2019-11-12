@@ -7,3 +7,5 @@
 std::string MovieDescription::getDescription() {
     return std::string();
 }
+
+MovieDescription::MovieDescription() = default;

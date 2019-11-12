@@ -9,6 +9,8 @@
 
 class Description {
 public:
+    Description() = default;
+
     virtual std::string getDescription() = 0;
 };
 

@@ -8,6 +8,10 @@
 #include "Description.h"
 
 class MovieDescription : Description {
+public:
+    MovieDescription();
+
+private:
     std::string getDescription() override;
 };
 
