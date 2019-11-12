@@ -10,13 +10,12 @@
 #include "Seat.h"
 #include "Description.h"
 
+class Movie;
 
 class Room{
 public:
     Room() = default;
 
-    virtual Movie getMovie() = 0;
-    virtual void setMovie(Movie movie) = 0;
     virtual std::vector<Seat> & getSeats() = 0;
     virtual Description getDescription() = 0;
 };

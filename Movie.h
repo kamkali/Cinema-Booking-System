@@ -13,22 +13,18 @@
 
 class Movie {
 private:
-    std::string title;
-    std::string director;
-    int production_year;
-    int price;
-    double movie_length;
-    time_t session_start;
-    Room room;
-    MovieDescription description;
+    std::string title{};
+    std::string director{};
+    int production_year{};
+    int price{};
+    double movie_length{};
+    time_t session_start{};
+    MovieDescription description{};
 
 public:
 
-
-    Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
-          time_t sessionStart, const Room &room, const MovieDescription &description);
-
-    virtual ~Movie();
+    Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
+          time_t sessionStart, MovieDescription description);
 
     const std::string &getTitle() const;
 
@@ -53,10 +49,6 @@ public:
     time_t getSessionStart() const;
 
     void setSessionStart(time_t sessionStart);
-
-    const Room &getRoom() const;
-
-    void setRoom(const Room &room);
 
     const MovieDescription &getDescription() const;
 
