@@ -12,6 +12,7 @@ private:
     int seatNumber;
 
 public:
+    Seat() = default;
     Seat(int row, int seatNumber);
 
 };

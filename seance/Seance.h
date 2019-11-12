@@ -6,8 +6,8 @@
 #define SIMPLE_EXAMPLE_SEANCE_H
 
 
-#include "Movie.h"
-#include "CinemaRoom.h"
+#include "../movie/Movie.h"
+#include "../room/CinemaRoom.h"
 
 class Seance {
 private:
@@ -16,7 +16,7 @@ private:
     time_t showingStart{};
 
 public:
-    Seance(const Movie &showingMovie, const CinemaRoom &showingRoom, time_t showingStart);
+    Seance(Movie showMovie, CinemaRoom showingRoom, time_t showingStart);
 
     const Movie &getShowingMovie() const;
 
@@ -31,8 +31,6 @@ public:
     void setShowingStart(time_t showingStart);
 
     void playCommercial();
-
-    virtual ~Seance();
 };
 
 

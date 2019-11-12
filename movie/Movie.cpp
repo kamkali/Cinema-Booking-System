@@ -2,14 +2,19 @@
 
 #include <utility>
 
+#include <utility>
+
+#include <utility>
+
+#include <utility>
+
 //
 // Created by Kamil Kaliś on 12/11/2019.
 //
 
 #include <iostream>
 #include "Movie.h"
-#include "Room.h"
-
+#include "../room/Room.h"
 
 
 const std::string &Movie::getTitle() const {
@@ -69,7 +74,9 @@ void Movie::printMovieInfo() {
 
 }
 
-Movie::Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
-             const MovieDescription &description) : title(title), director(director), production_year(productionYear),
-                                                    price(price), movie_length(movieLength), description(description) {}
+Movie::Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
+             MovieDescription description) : title(std::move(title)), director(std::move(director)),
+                                             production_year(productionYear),
+                                             price(price), movie_length(movieLength),
+                                             description(std::move(description)) {}
 

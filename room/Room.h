@@ -6,9 +6,9 @@
 #define SIMPLE_EXAMPLE_ROOM_H
 
 #include <vector>
-#include "Movie.h"
+#include "../movie/Movie.h"
 #include "Seat.h"
-#include "Description.h"
+#include "../seance/Description.h"
 
 class Movie;
 

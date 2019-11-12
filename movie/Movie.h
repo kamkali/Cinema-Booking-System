@@ -7,7 +7,7 @@
 
 #include <string>
 #include <ctime>
-#include "Room.h"
+#include "../room/Room.h"
 #include "MovieDescription.h"
 
 class Movie {
@@ -20,8 +20,8 @@ private:
     MovieDescription description;
 
 public:
-    Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
-          const MovieDescription &description);
+    Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
+          MovieDescription description);
 
     const std::string &getTitle() const;
 
@@ -42,10 +42,6 @@ public:
     double getMovieLength() const;
 
     void setMovieLength(double movieLength);
-
-    time_t getSessionStart() const;
-
-    void setSessionStart(time_t sessionStart);
 
     const MovieDescription &getDescription() const;
 

@@ -5,7 +5,7 @@
 #ifndef SIMPLE_EXAMPLE_ROOMDESCRIPTION_H
 #define SIMPLE_EXAMPLE_ROOMDESCRIPTION_H
 
-#include "Description.h"
+#include "../seance/Description.h"
 #include <string>
 
 class RoomDescription: public Description {

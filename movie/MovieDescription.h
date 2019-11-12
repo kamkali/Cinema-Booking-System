@@ -5,7 +5,7 @@
 #ifndef SIMPLE_EXAMPLE_MOVIEDESCRIPTION_H
 #define SIMPLE_EXAMPLE_MOVIEDESCRIPTION_H
 
-#include "Description.h"
+#include "../seance/Description.h"
 
 class MovieDescription : public Description {
 public:

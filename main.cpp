@@ -3,10 +3,10 @@
 //
 // Created by Piotr on 12.11.2019.
 //
-#include "Movie.h"
-#include "CinemaRoom.h"
-#include "RoomFactory.h"
-#include "CinemaRoomFactory.h"
+#include "movie/Movie.h"
+#include "room/CinemaRoom.h"
+#include "room/RoomFactory.h"
+#include "room/CinemaRoomFactory.h"
 
 
 int main(int argc, char * argv[]){
