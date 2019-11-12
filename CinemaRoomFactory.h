@@ -5,13 +5,13 @@
 #ifndef SIMPLE_EXAMPLE_CINEMAROOMFACTORY_H
 #define SIMPLE_EXAMPLE_CINEMAROOMFACTORY_H
 
-#include <vector>
+#include <queue>
 #include "RoomFactory.h"
 #include "CinemaRoom.h"
 
 class CinemaRoomFactory: public RoomFactory {
 private:
-    std::vector<Room> freeRooms;
+    std::queue<Room> freeRooms;
 
 public:
     CinemaRoomFactory();

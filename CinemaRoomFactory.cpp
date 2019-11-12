@@ -13,17 +13,21 @@ CinemaRoomFactory::CinemaRoomFactory() {
 
         RoomDescription description(i + 1, i % 3, "sala numer: " + std::to_string(i + 1));
         Room * room = new CinemaRoom(seats, description);
-        freeRooms.push_back(*room);
+        freeRooms.push(*room);
     }
 }
 
 void CinemaRoomFactory::returnInstance(Room & room) {
-    freeRooms.push_back(room);
+    freeRooms.push(room);
 }
 
-Room &CinemaRoomFactory::getInstance() {
-    Room room = freeRooms.pop_back();
-
-
-    return room;
+Room & CinemaRoomFactory::getInstance() {
+    if(!freeRooms.empty()){
+        Room & room = freeRooms.front();
+        freeRooms.pop();
+        return room;
+    } else{
+        Room * room = nullptr;
+        return *room;
+    }
 }
