@@ -11,12 +11,13 @@
 
 class CinemaRoomFactory: public RoomFactory {
 private:
-    std::queue<Room> freeRooms;
+    std::queue<Room *> freeRooms;
 
 public:
     CinemaRoomFactory();
-    Room & getInstance() override;
-    void returnInstance(Room & room) override;
+    Room * getInstance() override;
+    void returnInstance(Room * room) override;
+
 };
 
 

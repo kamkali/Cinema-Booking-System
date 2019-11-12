@@ -11,11 +11,33 @@
 
 int main(int argc, char * argv[]){
 
-    RoomFactory * roomFactory = new CinemaRoomFactory();
+//    std::vector<Seat> seats;
+//
+//    RoomDescription * description = new RoomDescription(1, 2, "abc");
+//
+//    Room * room = new CinemaRoom(seats, *description);
+//
+//    std::cout<<room->getDescription()<<std::endl;
 
-    Room room = roomFactory->getInstance();
 
-    std::cout << room.getDescription();
+
+
+    auto * roomFactory = new CinemaRoomFactory();
+
+    std::cout<<roomFactory->getInstance()->getDescription()<<std::endl;
+
+    Room * room;
+
+
+    room = roomFactory->getInstance();
+
+
+    roomFactory->returnInstance(room);
+
+    std::cout<<roomFactory->getInstance()->getDescription()<<std::endl;
+
+
+
 
 
     return 0;

@@ -1,7 +1,7 @@
 //
 // Created by Piotr on 12.11.2019.
 //
-
+#include <iostream>
 #include "CinemaRoomFactory.h"
 
 
@@ -13,21 +13,19 @@ CinemaRoomFactory::CinemaRoomFactory() {
 
         RoomDescription description(i + 1, i % 3, "sala numer: " + std::to_string(i + 1));
         Room * room = new CinemaRoom(seats, description);
-        freeRooms.push(*room);
+        freeRooms.push(room);
     }
 }
 
-void CinemaRoomFactory::returnInstance(Room & room) {
+void CinemaRoomFactory::returnInstance(Room * room) {
     freeRooms.push(room);
 }
 
-Room & CinemaRoomFactory::getInstance() {
+Room * CinemaRoomFactory::getInstance() {
     if(!freeRooms.empty()){
-        Room & room = freeRooms.front();
+        Room * room = freeRooms.front();
         freeRooms.pop();
         return room;
-    } else{
-        Room * room = nullptr;
-        return *room;
-    }
+    } else
+        return nullptr;
 }

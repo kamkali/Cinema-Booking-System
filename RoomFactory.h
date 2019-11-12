@@ -9,8 +9,8 @@
 
 class RoomFactory {
 public:
-    virtual Room & getInstance() = 0;
-    virtual void returnInstance(Room & room) = 0;
+    virtual Room * getInstance() = 0;
+    virtual void returnInstance(Room * room) = 0;
 };
 
 
