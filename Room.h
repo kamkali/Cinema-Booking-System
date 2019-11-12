@@ -6,5 +6,8 @@
 #define SIMPLE_EXAMPLE_ROOM_H
 
 class Room{
+public:
+    std::string getRoomName();
+    void printRoomInfo();
 };
 #endif //SIMPLE_EXAMPLE_ROOM_H

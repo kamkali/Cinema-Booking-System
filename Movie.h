@@ -7,6 +7,7 @@
 
 #include <string>
 #include <ctime>
+#include <ostream>
 #include "Room.h"
 #include "MovieDescription.h"
 
@@ -20,7 +21,6 @@ private:
     time_t session_start;
     Room room;
     MovieDescription description;
-
 
 public:
 
@@ -61,6 +61,9 @@ public:
     const MovieDescription &getDescription() const;
 
     void setDescription(const MovieDescription &description);
+
+    void printMovieInfo();
+
 };
 
 

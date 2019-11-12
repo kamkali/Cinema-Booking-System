@@ -2,6 +2,7 @@
 // Created by Kamil Kaliś on 12/11/2019.
 //
 
+#include <iostream>
 #include "Movie.h"
 
 Movie::Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
@@ -82,4 +83,15 @@ void Movie::setDescription(const MovieDescription &description) {
 }
 
 Movie::~Movie() = default;
+
+
+void Movie::printMovieInfo() {
+    std::cout << "Tytul: " << Movie::title << ", Rezyser: " << Movie::director << ", Rok produkcji: "
+              << Movie::production_year;
+    std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length << ", Start o godz: "
+              << Movie::session_start;
+    std::cout << ", W pokoju: " << Movie::room.getRoomName() << ", Opis: " << Movie::description.getDescription()
+              << std::endl;
+
+}
 

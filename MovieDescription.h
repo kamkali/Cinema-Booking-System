@@ -7,11 +7,10 @@
 
 #include "Description.h"
 
-class MovieDescription : Description {
+class MovieDescription : public Description {
 public:
     MovieDescription();
 
-private:
     std::string getDescription() override;
 };
 
