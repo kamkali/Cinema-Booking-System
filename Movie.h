@@ -17,13 +17,11 @@ private:
     int production_year;
     int price;
     double movie_length;
-    time_t session_start;
     MovieDescription description;
 
 public:
-
-    Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
-          time_t sessionStart, MovieDescription description);
+    Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
+          const MovieDescription &description);
 
     const std::string &getTitle() const;
 

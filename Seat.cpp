@@ -3,3 +3,5 @@
 //
 
 #include "Seat.h"
+
+Seat::Seat(int row, int seatNumber) : row(row), seatNumber(seatNumber) {}

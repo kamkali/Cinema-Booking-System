@@ -10,17 +10,7 @@
 #include "Movie.h"
 #include "Room.h"
 
-Movie::Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
-             time_t sessionStart, MovieDescription description) : title(std::move(title)),
-                                                                                           director(std::move(director)),
-                                                                                           production_year(
-                                                                                                   productionYear),
-                                                                                           price(price),
-                                                                                           movie_length(movieLength),
-                                                                                           session_start(sessionStart),
-                                                                                           description(std::move(description)) {
 
-}
 
 const std::string &Movie::getTitle() const {
     return title;
@@ -62,13 +52,6 @@ void Movie::setMovieLength(double movieLength) {
     movie_length = movieLength;
 }
 
-time_t Movie::getSessionStart() const {
-    return session_start;
-}
-
-void Movie::setSessionStart(time_t sessionStart) {
-    session_start = sessionStart;
-}
 
 const MovieDescription &Movie::getDescription() const {
     return description;
@@ -81,10 +64,12 @@ void Movie::setDescription(const MovieDescription &description) {
 void Movie::printMovieInfo() {
     std::cout << "Tytul: " << Movie::title << ", Rezyser: " << Movie::director << ", Rok produkcji: "
               << Movie::production_year;
-    std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length << ", Start o godz: "
-              << Movie::session_start;
-    std::cout << ", Opis: " << Movie::description.getDescription()
-              << std::endl;
+    std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length << ", Start o godz: ";
+    std::cout << ", Opis: " << Movie::description.getDescription() << std::endl;
 
 }
+
+Movie::Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
+             const MovieDescription &description) : title(title), director(director), production_year(productionYear),
+                                                    price(price), movie_length(movieLength), description(description) {}
 

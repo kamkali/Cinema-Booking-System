@@ -7,6 +7,12 @@
 
 
 class Seat {
+private:
+    int row;
+    int seatNumber;
+
+public:
+    Seat(int row, int seatNumber);
 
 };
 
