@@ -5,24 +5,40 @@
 //
 #include "Movie.h"
 #include "CinemaRoom.h"
-#include "Seance.h"
+#include "RoomFactory.h"
+#include "CinemaRoomFactory.h"
+
 
 int main(int argc, char * argv[]){
 
+//    std::vector<Seat> seats;
+//
+//    RoomDescription * description = new RoomDescription(1, 2, "abc");
+//
+//    Room * room = new CinemaRoom(seats, *description);
+//
+//    std::cout<<room->getDescription()<<std::endl;
 
-    MovieDescription descriptionMovie;
 
 
-    Movie movie2("tyt", "autor", 1999, 123, 12344.5, descriptionMovie);
 
-    std::vector<Seat> seats;
-    RoomDescription * roomDescription = new RoomDescription(1,3, "XDD");
-    CinemaRoom cinemaRoom(seats,  *roomDescription);
-    std::cout << cinemaRoom.getDescription() << std::endl;
+    auto * roomFactory = new CinemaRoomFactory();
 
-    Seance seans(movie2, cinemaRoom, time(nullptr));
+    std::cout<<roomFactory->getInstance()->getDescription()<<std::endl;
 
-    seans.playCommercial();
+    Room * room;
+
+
+    room = roomFactory->getInstance();
+
+
+    roomFactory->returnInstance(room);
+
+    std::cout<<roomFactory->getInstance()->getDescription()<<std::endl;
+
+
+
+
 
     return 0;
 }
