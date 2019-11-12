@@ -17,7 +17,7 @@ public:
     Room() = default;
 
     virtual std::vector<Seat> & getSeats() = 0;
-    virtual Description getDescription() = 0;
+    virtual std::string getDescription() = 0;
 };
 
 #endif //SIMPLE_EXAMPLE_ROOM_H
