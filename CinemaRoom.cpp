@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Piotr on 12.11.2019.
 //
@@ -10,11 +12,11 @@ std::vector<Seat> & CinemaRoom::getSeats() {
 }
 
 
-CinemaRoom::CinemaRoom(std::vector<Seat> & seats, const RoomDescription& description): Room(), seats(seats), description(description) {
+CinemaRoom::CinemaRoom(std::vector<Seat> & seats, const RoomDescription&  description): Room(), seats(seats), description(description) {
 }
 
-Description CinemaRoom::getDescription() {
-    return  description;
+std::string CinemaRoom::getDescription() {
+    return  description.getDescription();
 }
 
 CinemaRoom::CinemaRoom(): Room() {

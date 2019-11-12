@@ -12,13 +12,13 @@
 
 class Movie {
 private:
-    std::string title{};
-    std::string director{};
-    int production_year{};
-    int price{};
-    double movie_length{};
-    time_t session_start{};
-    MovieDescription description{};
+    std::string title;
+    std::string director;
+    int production_year;
+    int price;
+    double movie_length;
+    time_t session_start;
+    MovieDescription description;
 
 public:
 

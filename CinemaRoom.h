@@ -16,11 +16,11 @@ private:
 
 public:
     CinemaRoom();
-    CinemaRoom( std::vector<Seat> & seats, const RoomDescription& description);
+    CinemaRoom( std::vector<Seat> & seats, const RoomDescription & description);
 
     std::vector<Seat> & getSeats() override;
 
-    Description getDescription() override;
+    std::string getDescription() override;
 };
 
 
