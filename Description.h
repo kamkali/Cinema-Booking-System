@@ -1,5 +1,9 @@
 //
+<<<<<<< HEAD
 // Created by Kamil Kaliś on 12/11/2019.
+=======
+// Created by Piotr on 12.11.2019.
+>>>>>>> piotr
 //
 
 #ifndef SIMPLE_EXAMPLE_DESCRIPTION_H
@@ -9,9 +13,15 @@
 
 class Description {
 public:
+<<<<<<< HEAD
     Description() = default;
 
     virtual std::string getDescription() = 0;
+=======
+    virtual std::string getDescription() {
+        return nullptr;
+    }
+>>>>>>> piotr
 };
 
 
