@@ -1,20 +1,24 @@
+#include <utility>
+
+#include <utility>
+
 //
 // Created by Kamil Kaliś on 12/11/2019.
 //
 
 #include <iostream>
 #include "Movie.h"
+#include "Room.h"
 
-Movie::Movie(const std::string &title, const std::string &director, int productionYear, int price, double movieLength,
-             time_t sessionStart, const Room &room, const MovieDescription &description) : title(title),
-                                                                                           director(director),
+Movie::Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
+             time_t sessionStart, MovieDescription description) : title(std::move(title)),
+                                                                                           director(std::move(director)),
                                                                                            production_year(
                                                                                                    productionYear),
                                                                                            price(price),
                                                                                            movie_length(movieLength),
                                                                                            session_start(sessionStart),
-                                                                                           room(room),
-                                                                                           description(description) {
+                                                                                           description(std::move(description)) {
 
 }
 
@@ -66,14 +70,6 @@ void Movie::setSessionStart(time_t sessionStart) {
     session_start = sessionStart;
 }
 
-const Room &Movie::getRoom() const {
-    return room;
-}
-
-void Movie::setRoom(const Room &room) {
-    Movie::room = room;
-}
-
 const MovieDescription &Movie::getDescription() const {
     return description;
 }
@@ -82,15 +78,12 @@ void Movie::setDescription(const MovieDescription &description) {
     Movie::description = description;
 }
 
-Movie::~Movie() = default;
-
-
 void Movie::printMovieInfo() {
     std::cout << "Tytul: " << Movie::title << ", Rezyser: " << Movie::director << ", Rok produkcji: "
               << Movie::production_year;
     std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length << ", Start o godz: "
               << Movie::session_start;
-    std::cout << ", W pokoju: " << Movie::room.getRoomName() << ", Opis: " << Movie::description.getDescription()
+    std::cout << ", Opis: " << Movie::description.getDescription()
               << std::endl;
 
 }
