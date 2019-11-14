@@ -11,7 +11,8 @@ class Database {
 private:
     sqlite3* DB;
 public:
-    
+    void initialize(const std::string& name);
+    void close();
 
 };
 
