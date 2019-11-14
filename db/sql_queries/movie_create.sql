@@ -1,5 +1,5 @@
 CREATE TABLE movie(
-                      movie_id INTEGER PRIMARY KEY NOT NULL,
+                      movie_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                       title varchar[255]  NOT NULL,
                       director varchar[255] NOT NULL,
                       production_year integer NOT NULL,
