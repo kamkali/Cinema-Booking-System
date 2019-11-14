@@ -1,0 +1,1 @@
+SELECT * FROM seanses WHERE movie_id = 'movie_id';
