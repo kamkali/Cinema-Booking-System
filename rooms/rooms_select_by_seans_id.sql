@@ -1,0 +1,1 @@
+SELECT * FROM rooms WHERE seans_id = 'seans_id';
