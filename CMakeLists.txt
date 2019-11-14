@@ -6,7 +6,15 @@ set(CMAKE_CXX_STANDARD 17)            # Enable c++14 standard
 set(SOURCE_FILES main.cpp room/CinemaRoom.cpp room/CinemaRoom.h room/RoomDescription.cpp room/RoomDescription.h
         room/Seat.cpp room/Seat.h movie/Movie.h seance/Description.h movie/MovieDescription.cpp movie/MovieDescription.h
         movie/Movie.cpp room/Room.cpp room/Room.h seance/Seance.cpp seance/Seance.h room/RoomFactory.h
-        room/CinemaRoomFactory.h room/CinemaRoomFactory.cpp)
+        room/CinemaRoomFactory.h room/CinemaRoomFactory.cpp sqlite/sqlite3.c sqlite/sqlite3.h sqlite/sqlite3ext.h)
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(simple_example ${SOURCE_FILES})
+
+#set(CMAKE_PREFIX_PATH /home/ubuntu/mysql-connector-c++-8.0.18-linux-glibc2.12-x86-64bit)
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(simple_example Threads::Threads)
+
+target_link_libraries(simple_example ${CMAKE_DL_LIBS})

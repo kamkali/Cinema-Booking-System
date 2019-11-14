@@ -7,37 +7,22 @@
 #include "room/CinemaRoom.h"
 #include "room/RoomFactory.h"
 #include "room/CinemaRoomFactory.h"
-
+#include "sqlite/sqlite3.h"
 
 int main(int argc, char * argv[]){
 
-//    std::vector<Seat> seats;
-//
-//    RoomDescription * description = new RoomDescription(1, 2, "abc");
-//
-//    Room * room = new CinemaRoom(seats, *description);
-//
-//    std::cout<<room->getDescription()<<std::endl;
+    sqlite3* DB;
+    int exit = 0;
+    exit = sqlite3_open("example.db", &DB);
 
-
-
-
-    auto * roomFactory = new CinemaRoomFactory();
-
-    std::cout<<roomFactory->getInstance()->getDescription()<<std::endl;
-
-    Room * room;
-
-
-    room = roomFactory->getInstance();
-
-
-    roomFactory->returnInstance(room);
-
-    std::cout<<roomFactory->getInstance()->getDescription()<<std::endl;
-
-
-
+    if (exit) {
+        std::cerr << "Error open DB " << sqlite3_errmsg(DB) << std::endl;
+        return (-1);
+    }
+    else
+        std::cout << "Opened Database Successfully!" << std::endl;
+    sqlite3_close(DB);
+    return (0);
 
 
     return 0;
