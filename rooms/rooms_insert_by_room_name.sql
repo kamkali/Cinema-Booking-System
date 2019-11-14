@@ -1,2 +1,2 @@
 INSERT INTO rooms (room_name) 
-VALUES ('KinderBueno');
+VALUES ('room_name');
