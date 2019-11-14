@@ -1,2 +1,2 @@
-INSERT INTO movie_description(description)
+INSERT INTO movie_descriptions(description)
 VALUES ('description')

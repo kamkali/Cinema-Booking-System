@@ -1,1 +1,1 @@
-SELECT * FROM movie WHERE title = 'title';
+SELECT * FROM movies WHERE title = 'title';

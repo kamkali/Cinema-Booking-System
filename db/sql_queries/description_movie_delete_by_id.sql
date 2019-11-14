@@ -1,1 +1,1 @@
-DELETE FROM movie_description WHERE movie_description_id = 'movie_description_id'
+DELETE FROM movie_descriptions WHERE movie_description_id = 'movie_description_id'

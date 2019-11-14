@@ -1,4 +1,4 @@
-CREATE TABLE movie(
+CREATE TABLE movies(
                       movie_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                       title varchar[255]  NOT NULL,
                       director varchar[255] NOT NULL,

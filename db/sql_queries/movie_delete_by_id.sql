@@ -1,1 +1,1 @@
-DELETE FROM movie WHERE movie_id = 'movie_id'
+DELETE FROM movies WHERE movie_id = 'movie_id'
