@@ -1,0 +1,1 @@
+DELETE FROM seats WHERE seat_id = 'seat_id'
