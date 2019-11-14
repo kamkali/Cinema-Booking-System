@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)            # Enable c++14 standard
 set(SOURCE_FILES main.cpp room/CinemaRoom.cpp room/CinemaRoom.h room/RoomDescription.cpp room/RoomDescription.h
         room/Seat.cpp room/Seat.h movie/Movie.h seance/Description.h movie/MovieDescription.cpp movie/MovieDescription.h
         movie/Movie.cpp room/Room.cpp room/Room.h seance/Seance.cpp seance/Seance.h room/RoomFactory.h
-        room/CinemaRoomFactory.h room/CinemaRoomFactory.cpp db/Database.cpp db/Database.h sqlite/sqlite3.c sqlite/sqlite3.h sqlite/sqlite3ext.h db/QueryLoader.cpp db/QueryLoader.h)
+        room/CinemaRoomFactory.h room/CinemaRoomFactory.cpp db/Database.cpp db/Database.h sqlite/sqlite3.c sqlite/sqlite3.h sqlite/sqlite3ext.h db/QueryLoader.cpp db/QueryLoader.h db/QueryParser.cpp db/QueryParser.h)
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(simple_example ${SOURCE_FILES})
