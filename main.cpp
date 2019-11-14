@@ -3,17 +3,24 @@
 //
 // Created by Piotr on 12.11.2019.
 //
+#include <iostream>
 #include "movie/Movie.h"
 #include "room/CinemaRoom.h"
 #include "room/RoomFactory.h"
 #include "room/CinemaRoomFactory.h"
 #include "db/Database.h"
 #include "sqlite/sqlite3.h"
+#include "db/QueryLoader.h"
 
 int main(int argc, char * argv[]){
 
-    Database db;
+    QueryLoader queryLoader;
 
-    db.initialize("test");
-    db.close();
+    queryLoader.loadQueries();
+
+    std::map<unsigned int, std::string> queries = queryLoader.getQueries();
+
+    for(const auto& a:queries){
+        std::cout << a.first << " ---> " << a.second << std::endl;
+    }
 }
