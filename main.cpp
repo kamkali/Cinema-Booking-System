@@ -7,7 +7,7 @@
 #include "room/CinemaRoom.h"
 #include "room/RoomFactory.h"
 #include "room/CinemaRoomFactory.h"
-#include "Database"
+#include "db/Database.h"
 #include "sqlite/sqlite3.h"
 
 int main(int argc, char * argv[]){
