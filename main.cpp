@@ -7,13 +7,14 @@
 #include "room/CinemaRoom.h"
 #include "room/RoomFactory.h"
 #include "room/CinemaRoomFactory.h"
+#include "db/Database.h"
 #include "sqlite/sqlite3.h"
 
 int main(int argc, char * argv[]){
 
     sqlite3* DB;
-    int exit = 0;
-    exit = sqlite3_open("cinema.db", &DB);
+
+    int exit = sqlite3_open("cinema.db", &DB);
 
     if (exit) {
         std::cerr << "Error open DB " << sqlite3_errmsg(DB) << std::endl;
@@ -24,4 +25,6 @@ int main(int argc, char * argv[]){
     sqlite3_close(DB);
     return (0);
 
+
+    return 0;
 }
