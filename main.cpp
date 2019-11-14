@@ -13,7 +13,7 @@ int main(int argc, char * argv[]){
 
     sqlite3* DB;
     int exit = 0;
-    exit = sqlite3_open("example.db", &DB);
+    exit = sqlite3_open("cinema.db", &DB);
 
     if (exit) {
         std::cerr << "Error open DB " << sqlite3_errmsg(DB) << std::endl;
@@ -24,6 +24,4 @@ int main(int argc, char * argv[]){
     sqlite3_close(DB);
     return (0);
 
-
-    return 0;
 }
