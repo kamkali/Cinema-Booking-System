@@ -1,0 +1,1 @@
+CREATE TABLE movie_description(movie_description_id INTEGER PRIMARY KEY NOT NULL)

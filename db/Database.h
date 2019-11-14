@@ -14,6 +14,7 @@ public:
     void initialize(const std::string& name);
     void close();
 
+
 };
 
 

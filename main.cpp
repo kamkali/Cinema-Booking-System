@@ -12,19 +12,8 @@
 
 int main(int argc, char * argv[]){
 
-    sqlite3* DB;
+    Database db;
 
-    int exit = sqlite3_open("cinema.db", &DB);
-
-    if (exit) {
-        std::cerr << "Error open DB " << sqlite3_errmsg(DB) << std::endl;
-        return (-1);
-    }
-    else
-        std::cout << "Opened Database Successfully!" << std::endl;
-    sqlite3_close(DB);
-    return (0);
-
-
-    return 0;
+    db.initialize("test");
+    db.close();
 }
