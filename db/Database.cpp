@@ -56,7 +56,7 @@ std::vector<std::vector<std::string> *> *Database::execute(QueryName queryName) 
 void Database::deleteResult(std::vector<std::vector<std::string> *> *result) {
 
     for (auto i : *result)
-        delete result;
+        delete i;
 
     delete result;
 }
