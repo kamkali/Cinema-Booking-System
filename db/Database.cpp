@@ -6,16 +6,15 @@
 #include <iostream>
 #include "../exception/InitializeDatabaseException.h"
 
-static int callback(void* data, int argc, char** argv, char** azColName)
-{
-    int i;
-    fprintf(stderr, "%s: ", (const char*)data);
+static std::vector<std::vector<std::string> *> *latestResults;
 
-    for (i = 0; i < argc; i++) {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-    }
+static int callback(void *data, int argc, char **argv, char **azColName) {
 
-    printf("\n");
+    latestResults->push_back(new std::vector<std::string>());
+
+    for (int i = 0; i < argc; i++)
+        latestResults->back()->push_back(argv[i] ? argv[i] : "NULL");
+
     return 0;
 }
 
@@ -32,23 +31,24 @@ void Database::close() {
     sqlite3_close(DB);
 }
 
-void Database::execute(QueryName queryName, const std::string args[]) {
+std::vector<std::vector<std::string> *> *Database::execute(QueryName queryName, const std::string args[]) {
 
     std::string queryToExecute = QueryParser::parse(queries[queryName], args);
 
-    std::cout << queryToExecute << std::endl;
+    latestResults = new std::vector<std::vector<std::string> *>();
 
-    char ** msg;
+    sqlite3_exec(DB, queryToExecute.c_str(), callback, nullptr, nullptr);
 
-    sqlite3_exec(DB, queryToExecute.c_str(), nullptr, nullptr, nullptr);
-
-
-//TODO execute
+    return latestResults;
 }
 
-void Database::execute(QueryName queryName) {
+std::vector<std::vector<std::string> *> *Database::execute(QueryName queryName) {
 
     std::string queryToExecute = queries[queryName];
 
-    sqlite3_exec(DB, queryToExecute.c_str(), nullptr, nullptr, nullptr);
+    latestResults = new std::vector<std::vector<std::string> *>();
+
+    sqlite3_exec(DB, queryToExecute.c_str(), callback, nullptr, nullptr);
+
+    return latestResults;
 }

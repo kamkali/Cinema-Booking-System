@@ -9,18 +9,35 @@
 
 std::string QueryParser::parse(std::string query, const std::string args[]) {
     unsigned int i = 0;
-    unsigned int begin = 0;
-    unsigned int end = 0;
+    unsigned long beginSingle = 0;
+    unsigned long beginDouble = 0;
+    unsigned long endSingle = 0;
+    unsigned long endDouble = 0;
 
-    while(begin < query.size()){
-        begin = query.find('\'', begin);
-        end = query.find('\'', begin + 1);
+    while (beginSingle < query.size()) {
+        beginSingle = query.find('\'', beginSingle);
+        beginDouble = query.find('"', beginDouble);
 
-        if(begin == std::string::npos || end == std::string::npos)
-            break;
+        if (beginSingle < beginDouble) {
+            endSingle = query.find('\'', beginSingle + 1);
 
-        query.replace(begin, end - begin + 1, args[i]);
-        begin += args[i].size();
+            if (beginSingle == std::string::npos || endSingle == std::string::npos)
+                break;
+
+            query.replace(beginSingle, endSingle - beginSingle + 1, args[i]);
+            beginSingle += args[i].size();
+            beginDouble = beginSingle;
+        } else {
+            endDouble = query.find('"', beginDouble + 1);
+
+            if (beginDouble == std::string::npos || endDouble == std::string::npos)
+                break;
+
+            query.replace(beginDouble + 1, endDouble - beginDouble - 1, args[i]);
+            beginDouble += args[i].size() + 2;
+            beginSingle = beginDouble;
+        }
+
         i++;
     }
 

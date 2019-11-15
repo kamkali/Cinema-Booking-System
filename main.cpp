@@ -32,7 +32,33 @@ int main(int argc, char * argv[]){
 
     std::string array[] ={"Titanic", "Brosman", "1999", "12", "14.32", "1"};
 
-    database.execute(QueryName::MOVIE_INSERT , array);
+    std::vector<std::vector<std::string> *> *result = database.execute(QueryName::MOVIE_INSERT, array);
+
+    for (auto i : *result) {
+        for (const auto &j: *i)
+            std::cout << j << ", ";
+
+        std::cout << std::endl;
+    }
+
+    std::string array2[] = {"Skyfall", "Craig", "2005", "13", "21.32", "5"};
+
+    database.execute(QueryName::MOVIE_INSERT, array2);
+
+    std::string array3[] = {"Titanic", "Craig", "2005", "13", "21.32", "5"};
+
+    database.execute(QueryName::MOVIE_INSERT, array3);
+
+    std::string array5[]{"Titanic"};
+
+    result = database.execute(QueryName::MOVIE_SELECT_BY_NAME, array5);
+
+    for (auto i : *result) {
+        for (const auto &j: *i)
+            std::cout << j << ", ";
+
+        std::cout << std::endl;
+    }
 
     database.close();
 }

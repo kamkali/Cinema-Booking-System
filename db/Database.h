@@ -8,7 +8,7 @@
 #include "../sqlite/sqlite3.h"
 #include "QueryLoader.h"
 #include "QueryParser.h"
-#include <string>
+#include <vector>
 
 class Database {
 private:
@@ -18,8 +18,10 @@ public:
     explicit Database(std::map<unsigned int, std::string>& queries);
     void initialize(const std::string& name);
     void close();
-    void execute(QueryName queryName);
-    void execute(QueryName queryName, const std::string args[]);
+
+    std::vector<std::vector<std::string> *> *execute(QueryName queryName);
+
+    std::vector<std::vector<std::string> *> *execute(QueryName queryName, const std::string args[]);
 
 };
 

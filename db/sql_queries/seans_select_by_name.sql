@@ -1,1 +1,3 @@
-SELECT * FROM seanses WHERE seans_name = 'seans_name';
+SELECT *
+FROM seanses
+WHERE seans_name = "seans_name";

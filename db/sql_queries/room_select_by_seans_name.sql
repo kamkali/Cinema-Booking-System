@@ -1,1 +1,1 @@
-SELECT * FROM rooms WHERE seans_name = 'seans_name';
+SELECT * FROM rooms WHERE seans_name = "seans_name";
