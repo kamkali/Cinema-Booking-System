@@ -19,7 +19,7 @@ public:
     void initialize(const std::string& name);
     void close();
     void execute(QueryName queryName);
-    void execute(QueryName queryName, const std::string& args...);
+    void execute(QueryName queryName, const std::string args[]);
 
 };
 

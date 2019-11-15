@@ -20,9 +20,9 @@ int main(int argc, char * argv[]){
 
     std::map<unsigned int, std::string> queries = queryLoader.getQueries();
 
-    for(const auto& a:queries){
-        std::cout << a.first << " ---> " << a.second << std::endl;
-    }
+//    for(const auto& a:queries){
+//        std::cout << a.first << " ---> " << a.second << std::endl;
+//    }
 
     Database database(queries);
 
@@ -30,7 +30,9 @@ int main(int argc, char * argv[]){
 
     database.execute(QueryName::MOVIES_CREATE);
 
-    database.execute(QueryName::MOVIE_INSERT , "Titanic", "Brosman", "1999", "12", "14.32", "1");
+    std::string array[] ={"Titanic", "Brosman", "1999", "12", "14.32", "1"};
+
+    database.execute(QueryName::MOVIE_INSERT , array);
 
     database.close();
 }

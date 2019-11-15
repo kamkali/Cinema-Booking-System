@@ -9,7 +9,7 @@
 
 class QueryParser {
 public:
-    static std::string parse(std::string query, std::string args...);
+    static std::string parse(std::string query, const std::string args[]);
 };
 
 

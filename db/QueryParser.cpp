@@ -5,21 +5,23 @@
 #include <cstdarg>
 #include "QueryParser.h"
 
-//TODO does not work
-std::string QueryParser::parse(std::string query, std::string args...) {
 
-    va_list arguments;
-    va_start(arguments, args);
 
+std::string QueryParser::parse(std::string query, const std::string args[]) {
+    unsigned int i = 0;
     unsigned int begin = 0;
     unsigned int end = 0;
-    while(begin >= std::string::npos || end>= std::string::npos){
-        begin = query.find('\'',begin);
+
+    while(begin < query.size()){
+        begin = query.find('\'', begin);
         end = query.find('\'', begin + 1);
 
-        query.replace(begin, end - begin + 1, va_arg(arguments, char *));
+        if(begin == std::string::npos || end == std::string::npos)
+            break;
 
-        end = begin;
+        query.replace(begin, end - begin + 1, args[i]);
+        begin += args[i].size();
+        i++;
     }
 
     return query;
