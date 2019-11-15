@@ -18,21 +18,19 @@ int main(int argc, char * argv[]){
 
     queryLoader.loadQueries();
 
-    std::map<unsigned int, std::string> queries = queryLoader.getQueries();
-
-//    for(const auto& a:queries){
-//        std::cout << a.first << " ---> " << a.second << std::endl;
-//    }
+    std::map<unsigned int, std::string> queries = queryLoader.getQueries(); //load queries from sql files
 
     Database database(queries);
 
-    database.initialize("cinema");
+    database.initialize("cinema"); //create database
 
     database.execute(QueryName::MOVIES_CREATE);
 
     std::string array[] ={"Titanic", "Brosman", "1999", "12", "14.32", "1"};
 
     std::vector<std::vector<std::string> *> *result = database.execute(QueryName::MOVIE_INSERT, array);
+
+    Database::deleteResult(result); //clear result pointer values
 
     for (auto i : *result) {
         for (const auto &j: *i)
@@ -43,11 +41,15 @@ int main(int argc, char * argv[]){
 
     std::string array2[] = {"Skyfall", "Craig", "2005", "13", "21.32", "5"};
 
-    database.execute(QueryName::MOVIE_INSERT, array2);
+    result = database.execute(QueryName::MOVIE_INSERT, array2);
+
+    Database::deleteResult(result);
 
     std::string array3[] = {"Titanic", "Craig", "2005", "13", "21.32", "5"};
 
-    database.execute(QueryName::MOVIE_INSERT, array3);
+    result = database.execute(QueryName::MOVIE_INSERT, array3);
+
+    Database::deleteResult(result);
 
     std::string array5[]{"Titanic"};
 
@@ -59,6 +61,8 @@ int main(int argc, char * argv[]){
 
         std::cout << std::endl;
     }
+
+    Database::deleteResult(result);
 
     database.close();
 }

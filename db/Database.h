@@ -19,6 +19,8 @@ public:
     void initialize(const std::string& name);
     void close();
 
+    static void deleteResult(std::vector<std::vector<std::string> *> *result);
+
     std::vector<std::vector<std::string> *> *execute(QueryName queryName);
 
     std::vector<std::vector<std::string> *> *execute(QueryName queryName, const std::string args[]);

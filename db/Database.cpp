@@ -52,3 +52,11 @@ std::vector<std::vector<std::string> *> *Database::execute(QueryName queryName) 
 
     return latestResults;
 }
+
+void Database::deleteResult(std::vector<std::vector<std::string> *> *result) {
+
+    for (auto i : *result)
+        delete result;
+
+    delete result;
+}
