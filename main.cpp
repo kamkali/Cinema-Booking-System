@@ -11,27 +11,21 @@
 #include "db/Database.h"
 #include "sqlite/sqlite3.h"
 #include "db/QueryLoader.h"
-#include "command/RegisterUserCommand.h"
+#include "command/Command.h"
+#include "command/InitializeAdminAccount.h"
+#include "command/InitializeCinemaSystem.h"
 
 int main(int argc, char * argv[]){
 
-    QueryLoader queryLoader;
+    Command * command = new InitializeCinemaSystem("cinema");
 
-    queryLoader.loadQueries();
+    command->execute();
 
-    std::map<unsigned int, std::string> queries = queryLoader.getQueries(); //load queries from sql files
+    Database * database = dynamic_cast<InitializeCinemaSystem *>(command)->getDatabase();
 
-    Database database(queries);
+    command = new InitializeAdminAccount(database, "admin", "admin");
 
-    database.initialize("cinemas"); //create database
+    command->execute();
 
-    database.execute(QueryName::MOVIES_CREATE);
-
-    database.execute(QueryName::USERS_CREATE);
-
-    Command * userRegisterCommand = new RegisterUserCommand(&database, "Kamil", "password1233");
-
-    userRegisterCommand->execute();
-
-    database.close();
+    database->close();
 }
