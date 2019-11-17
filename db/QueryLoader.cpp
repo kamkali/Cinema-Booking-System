@@ -24,6 +24,7 @@ void QueryLoader::loadQueries() {
             "room_select_by_name",
             "room_select_by_seans_id",
             "room_select_by_seans_name",
+            "room_select_occupied_rooms",
             "room_update_by_id",
             "rooms_create",
             "seans_delete",

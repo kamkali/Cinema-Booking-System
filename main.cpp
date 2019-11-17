@@ -16,7 +16,9 @@
 #include "command/InitializeCinemaSystem.h"
 #include "command/InitializeRooms.h"
 #include "command/ReturnRoom.h"
+#include "command/SelectOccupiedRooms.h"
 
+#define SEATS_PER_ROW 10;
 
 int main(int argc, char * argv[]){
 
@@ -36,11 +38,18 @@ int main(int argc, char * argv[]){
 
     RoomFactory * roomPool = dynamic_cast<InitializeRooms *>(command)->getRoomPool();
 
-    Room * room = roomPool->getInstance();
-
-    command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
+    command = new SelectOccupiedRooms(database, 100);
 
     command->execute();
 
+    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
+
+    for(auto room: occupiedRooms) {
+
+        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
+
+        command->execute();
+
+    }
     database->close();
 }
