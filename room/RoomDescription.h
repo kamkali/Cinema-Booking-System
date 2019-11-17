@@ -19,6 +19,12 @@ public:
     RoomDescription(size_t number, size_t floor, std::string name);
     RoomDescription(const RoomDescription & roomDescription);
     std::string getDescription() override;
+
+    size_t getNumber() const;
+
+    size_t getFloor() const;
+
+    const std::string &getName() const;
 };
 
 

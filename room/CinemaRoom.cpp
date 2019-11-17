@@ -16,8 +16,8 @@ CinemaRoom::CinemaRoom(std::vector<Seat *> & seats, const RoomDescription * desc
     this -> description = const_cast<RoomDescription *>(description);
 }
 
-std::string CinemaRoom::getDescription() {
-    return  description->getDescription();
+RoomDescription CinemaRoom::getDescription() {
+    return  *description;
 }
 
 CinemaRoom::CinemaRoom(): Room() {

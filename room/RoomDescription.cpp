@@ -19,3 +19,15 @@ RoomDescription::RoomDescription(const RoomDescription &roomDescription) {
     this->floor = roomDescription.floor;
     this->name = roomDescription.name;
 }
+
+size_t RoomDescription::getNumber() const {
+    return number;
+}
+
+size_t RoomDescription::getFloor() const {
+    return floor;
+}
+
+const std::string &RoomDescription::getName() const {
+    return name;
+}

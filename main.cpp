@@ -15,6 +15,7 @@
 #include "command/InitializeAdminAccount.h"
 #include "command/InitializeCinemaSystem.h"
 #include "command/InitializeRooms.h"
+#include "command/ReturnRoom.h"
 
 
 int main(int argc, char * argv[]){
@@ -37,9 +38,9 @@ int main(int argc, char * argv[]){
 
     Room * room = roomPool->getInstance();
 
-    roomPool->returnInstance(room);
+    command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
 
-
+    command->execute();
 
     database->close();
 }

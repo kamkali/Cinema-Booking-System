@@ -20,7 +20,7 @@ public:
 
     std::vector<Seat *> & getSeats() override;
 
-    std::string getDescription() override;
+    RoomDescription getDescription() override;
 };
 
 
