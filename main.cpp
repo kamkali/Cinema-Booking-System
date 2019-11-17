@@ -14,18 +14,32 @@
 #include "command/Command.h"
 #include "command/InitializeAdminAccount.h"
 #include "command/InitializeCinemaSystem.h"
+#include "command/RegisterUserCommand.h"
+#include "command/LoginUserCommand.h"
 
-int main(int argc, char * argv[]){
+int main(int argc, char *argv[]) {
 
-    Command * command = new InitializeCinemaSystem("cinema");
+    Command *command = new InitializeCinemaSystem("cinema");
 
     command->execute();
 
-    Database * database = dynamic_cast<InitializeCinemaSystem *>(command)->getDatabase();
+    Database *database = dynamic_cast<InitializeCinemaSystem *>(command)->getDatabase();
 
     command = new InitializeAdminAccount(database, "admin", "admin");
 
     command->execute();
+
+    Command *userRegister = new RegisterUserCommand(database, "janko123", "jaknoPass123");
+    userRegister->execute();
+
+    Command *logUser = new LoginUserCommand(database, "janko123", "jaknoPass123");
+//    Command *logUser = new LoginUserCommand(database, "janko123", "wrongPass");
+
+    logUser->execute();
+
+    bool loggedUser = dynamic_cast<LoginUserCommand *>(logUser)->isLogged();
+    if (!loggedUser)
+        std::cout << "Cannot log user" << std::endl;
 
     database->close();
 }
