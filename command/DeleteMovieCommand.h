@@ -15,9 +15,10 @@ class DeleteMovieCommand: public Command {
 private:
     Database *DB;
     std::string movieTitle;
+    std::string role;
 
 public:
-    DeleteMovieCommand(Database *db, const std::string &movieTitle);
+    DeleteMovieCommand(Database *db, const std::string &movieTitle, const std::string &role);
 
     void execute() override;
 };

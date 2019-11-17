@@ -8,8 +8,15 @@
 #include "../seance/Description.h"
 
 class MovieDescription : public Description {
+private:
+    std::string description;
+
 public:
     MovieDescription();
+
+    void setDescription(const std::string &description);
+
+    MovieDescription(const std::string &description);
 
     std::string getDescription() override;
 };
