@@ -23,3 +23,4 @@ void InitializeAdminAccount::execute() {
 
 InitializeAdminAccount::InitializeAdminAccount(Database * db, std::string username, std::string password): database(db), username(std::move(username)), password(std::move(password)) {
 }
+

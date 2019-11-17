@@ -13,22 +13,19 @@
 #include "db/QueryLoader.h"
 #include "command/Command.h"
 #include "command/InitializeAdminAccount.h"
+#include "command/InitializeCinemaSystem.h"
 
 int main(int argc, char * argv[]){
 
-    QueryLoader queryLoader;
-
-    queryLoader.loadQueries();
-
-    std::map<unsigned int, std::string> queries = queryLoader.getQueries(); //load queries from sql files
-
-    Database database(queries);
-
-    database.initialize("cinema"); //create database
-
-    Command * command = new InitializeAdminAccount(&database, "admin", "admin");
+    Command * command = new InitializeCinemaSystem("cinema");
 
     command->execute();
 
-    database.close();
+    Database * database = dynamic_cast<InitializeCinemaSystem *>(command)->getDatabase();
+
+    command = new InitializeAdminAccount(database, "admin", "admin");
+
+    command->execute();
+
+    database->close();
 }
