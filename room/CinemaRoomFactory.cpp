@@ -6,15 +6,7 @@
 
 
 CinemaRoomFactory::CinemaRoomFactory() {
-
-    for(int i = 0; i < 10; i++)
-    {
-        std::vector<Seat> seats(100);
-
-        RoomDescription description(i + 1, i % 3, "sala numer: " + std::to_string(i + 1));
-        Room * room = new CinemaRoom(seats, description);
-        freeRooms.push(room);
-    }
+    freeRooms = std::queue<Room *>();
 }
 
 void CinemaRoomFactory::returnInstance(Room * room) {

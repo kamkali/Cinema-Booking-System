@@ -11,12 +11,12 @@
 class RoomDescription: public Description {
 private:
     size_t number{};
-    int floor{};
+    size_t floor{};
     std::string name;
 
 public:
     RoomDescription() = default;
-    RoomDescription(size_t number, int floor, std::string name);
+    RoomDescription(size_t number, size_t floor, std::string name);
     RoomDescription(const RoomDescription & roomDescription);
     std::string getDescription() override;
 };

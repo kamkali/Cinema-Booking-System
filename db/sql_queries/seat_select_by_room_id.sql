@@ -1,0 +1,1 @@
+SELECT * FROM seats WHERE room_id = 'room_id'

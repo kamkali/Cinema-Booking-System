@@ -14,6 +14,8 @@
 #include "command/Command.h"
 #include "command/InitializeAdminAccount.h"
 #include "command/InitializeCinemaSystem.h"
+#include "command/InitializeRooms.h"
+
 
 int main(int argc, char * argv[]){
 
@@ -26,6 +28,18 @@ int main(int argc, char * argv[]){
     command = new InitializeAdminAccount(database, "admin", "admin");
 
     command->execute();
+
+    command = new InitializeRooms(database, 10, 100, 10);
+
+    command->execute();
+
+    RoomFactory * roomPool = dynamic_cast<InitializeRooms *>(command)->getRoomPool();
+
+    Room * room = roomPool->getInstance();
+
+    roomPool->returnInstance(room);
+
+
 
     database->close();
 }

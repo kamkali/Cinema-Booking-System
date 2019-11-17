@@ -5,15 +5,16 @@
 #ifndef SIMPLE_EXAMPLE_SEAT_H
 #define SIMPLE_EXAMPLE_SEAT_H
 
+#include <iostream>
 
 class Seat {
 private:
-    int row;
-    int seatNumber;
+    size_t row;
+    size_t seatNumber;
 
 public:
     Seat() = default;
-    Seat(int row, int seatNumber);
+    Seat(size_t row, size_t seatNumber);
 
 };
 

@@ -11,14 +11,14 @@
 
 class CinemaRoom: public Room{
 private:
-    std::vector<Seat> seats;
-    RoomDescription description;
+    std::vector<Seat *> seats;
+    RoomDescription * description;
 
 public:
     CinemaRoom();
-    CinemaRoom( std::vector<Seat> & seats, const RoomDescription & description);
+    CinemaRoom( std::vector<Seat *> & seats, const RoomDescription * description);
 
-    std::vector<Seat> & getSeats() override;
+    std::vector<Seat *> & getSeats() override;
 
     std::string getDescription() override;
 };

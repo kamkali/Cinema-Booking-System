@@ -1,0 +1,58 @@
+//
+// Created by piotr on 17.11.2019.
+//
+
+#include "InitializeRooms.h"
+
+void InitializeRooms::execute() {
+    std::vector<std::vector<std::string> *> *result = database->execute(QueryName::ROOM_SELECT_ALL);
+
+    if((*result).empty()){
+
+        for(size_t i = 1; i <= roomNumber; i++) {
+            std::string arg[] = {"Room " + std::to_string(i)};
+            Database::deleteResult(database->execute(QueryName::ROOM_INSERT_BY_NAME, arg));
+
+            result = database->execute(QueryName::ROOM_SELECT_BY_NAME, arg);
+            size_t roomId = std::stoi((*result).at(0)->at(0));
+            Database::deleteResult(result);
+
+            for(size_t j = 1; j <= seatsNumber; j++) {
+                std::string args[] = {std::to_string(roomId), "0", std::to_string(j)};
+                Database::deleteResult(database->execute(QueryName::SEAT_INSERT, args));
+            }
+        }
+    }
+
+    result = database->execute(QueryName::ROOM_SELECT_ALL);
+
+    std::vector<std::vector<std::string> *> *seatsResult;
+
+    for(auto room:*result){
+
+        std::string roomId[] = {room->at(0)};
+
+        seatsResult = database->execute(QueryName::SEAT_SELECT_BY_ROOM_ID, roomId);
+
+        std::vector<Seat*> seats;
+
+        for(auto seat : *seatsResult)
+            seats.push_back(new Seat(stoi(seat->at(3))/(seatsPerRow + 1) + 1, stoi(seat->at(3))));
+
+        size_t index = room->at(1).find(' ');
+        size_t number = std::stoi(room->at(1).substr(index + 1, std::string::npos));
+
+        auto * roomDescription = new RoomDescription(number, number%3, room->at(1));
+
+        roomPool->returnInstance(new CinemaRoom(seats, roomDescription));
+    }
+}
+
+InitializeRooms::InitializeRooms(Database *database, size_t roomNumber, size_t seatsNumber, size_t rowsNumber):
+        database(database), roomNumber(roomNumber), seatsNumber(seatsNumber), seatsPerRow(rowsNumber) {
+    roomPool = new CinemaRoomFactory();
+}
+
+RoomFactory *InitializeRooms::getRoomPool() {
+    return roomPool;
+}

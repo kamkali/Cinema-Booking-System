@@ -7,18 +7,19 @@
 #include "CinemaRoom.h"
 
 
-std::vector<Seat> & CinemaRoom::getSeats() {
+std::vector<Seat*> & CinemaRoom::getSeats() {
     return seats;
 }
 
 
-CinemaRoom::CinemaRoom(std::vector<Seat> & seats, const RoomDescription&  description): Room(), seats(seats), description(description) {
+CinemaRoom::CinemaRoom(std::vector<Seat *> & seats, const RoomDescription * description): Room(), seats(seats) {
+    this -> description = const_cast<RoomDescription *>(description);
 }
 
 std::string CinemaRoom::getDescription() {
-    return  description.getDescription();
+    return  description->getDescription();
 }
 
 CinemaRoom::CinemaRoom(): Room() {
-
+    description = nullptr;
 }

@@ -4,4 +4,4 @@
 
 #include "Seat.h"
 
-Seat::Seat(int row, int seatNumber) : row(row), seatNumber(seatNumber) {}
+Seat::Seat(size_t row, size_t seatNumber) : row(row), seatNumber(seatNumber) {}

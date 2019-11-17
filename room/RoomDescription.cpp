@@ -6,7 +6,7 @@
 
 #include "RoomDescription.h"
 
-RoomDescription::RoomDescription(size_t number, int floor, std::string name):number(number), floor(floor), name(std::move(name)) {
+RoomDescription::RoomDescription(size_t number, size_t floor, std::string name):number(number), floor(floor), name(std::move(name)) {
 
 }
 

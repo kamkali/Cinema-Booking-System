@@ -16,7 +16,7 @@ class Room{
 public:
     Room() = default;
 
-    virtual std::vector<Seat> & getSeats() {};
+    virtual std::vector<Seat *> & getSeats() {};
     virtual std::string getDescription() {};
 };
 
