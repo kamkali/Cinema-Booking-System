@@ -16,6 +16,7 @@
 #include "command/InitializeCinemaSystem.h"
 #include "command/RegisterUserCommand.h"
 #include "command/LoginUserCommand.h"
+#include "command/CreateMovieCommand.h"
 
 int main(int argc, char *argv[]) {
 
@@ -40,6 +41,13 @@ int main(int argc, char *argv[]) {
     bool loggedUser = dynamic_cast<LoginUserCommand *>(logUser)->isLogged();
     if (!loggedUser)
         std::cout << "Cannot log user" << std::endl;
+
+    Command *createMovie = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
+
+    createMovie->execute();
+
+    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
+    createMovie2->execute();
 
     database->close();
 }

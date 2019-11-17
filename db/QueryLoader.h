@@ -37,6 +37,7 @@ enum QueryName{
     USER_INSERT,
     USER_SELECT_BY_NAME,
     USERS_CREATE,
+    DESCRIPTION_MOVIE_SELECT,
 };
 
 class QueryLoader {

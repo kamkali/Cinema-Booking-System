@@ -1,0 +1,54 @@
+//
+// Created by Kamil Kaliś on 17/11/2019.
+//
+
+#include <iostream>
+#include "CreateMovieCommand.h"
+
+
+
+
+void CreateMovieCommand::execute() {
+    if (role == "ROLE_ADMIN") {
+        std::string checkArg[] = {title};
+
+        std::vector<std::vector<std::string> *> *checkMovie = DB->execute(MOVIE_SELECT_BY_NAME, checkArg);
+
+        if((*checkMovie).empty()){
+            std::string descriptionArgs[] = {movieDescription};
+
+            DB->execute(DESCRIPTION_MOVIE_INSERT, descriptionArgs);
+            std::vector<std::vector<std::string> *> *descResult = DB->execute(DESCRIPTION_MOVIE_SELECT);
+
+            std::string args[] = {title, director, std::to_string(production_year),
+                                  std::to_string(price), std::to_string(movie_length), descResult->back()->at(0)};
+
+            std::vector<std::vector<std::string> *> *result = DB->execute(MOVIE_INSERT, args);
+
+            Database::deleteResult(descResult);
+            Database::deleteResult(result);
+        }else{
+            std::cout << "Movie record already exists in database!" << std::endl;
+        }
+    } else {
+        std::cout << "User is not an admin" << std::endl;
+    }
+
+
+
+}
+
+CreateMovieCommand::CreateMovieCommand(Database *db, const std::string &title, const std::string &director,
+                                       int productionYear, double price, double movieLength,
+                                       const std::string &movieDescription, const std::string &role) : DB(db),
+                                                                                                       title(title),
+                                                                                                       director(
+                                                                                                               director),
+                                                                                                       production_year(
+                                                                                                               productionYear),
+                                                                                                       price(price),
+                                                                                                       movie_length(
+                                                                                                               movieLength),
+                                                                                                       movieDescription(
+                                                                                                               movieDescription),
+                                                                                                       role(role) {}
