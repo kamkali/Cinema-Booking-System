@@ -17,6 +17,7 @@
 #include "command/RegisterUserCommand.h"
 #include "command/LoginUserCommand.h"
 #include "command/CreateMovieCommand.h"
+#include "command/DeleteMovieCommand.h"
 
 int main(int argc, char *argv[]) {
 
@@ -48,6 +49,9 @@ int main(int argc, char *argv[]) {
 
     Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
     createMovie2->execute();
+
+//    Command *deleteMovie = new DeleteMovieCommand(database, "Somth");
+//    deleteMovie->execute();
 
     database->close();
 }
