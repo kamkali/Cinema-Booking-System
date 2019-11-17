@@ -17,6 +17,8 @@ void InitializeAdminAccount::execute() {
 
         database->execute(QueryName::USER_INSERT, creationArgs);
     }
+
+    Database::deleteResult(result);
 }
 
 InitializeAdminAccount::InitializeAdminAccount(Database * db, std::string username, std::string password): database(db), username(std::move(username)), password(std::move(password)) {
