@@ -10,7 +10,7 @@ void InitializeRooms::execute() {
     if((*result).empty()){
 
         for(size_t i = 1; i <= roomNumber; i++) {
-            std::string arg[] = {"Room " + std::to_string(i)};
+            std::string arg[] = {"Room " + std::to_string(i), "0"};
             Database::deleteResult(database->execute(QueryName::ROOM_INSERT_BY_NAME, arg));
 
             result = database->execute(QueryName::ROOM_SELECT_BY_NAME, arg);
@@ -28,23 +28,26 @@ void InitializeRooms::execute() {
 
     std::vector<std::vector<std::string> *> *seatsResult;
 
-    for(auto room:*result){
+    for(auto room:*result) {
 
-        std::string roomId[] = {room->at(0)};
+        if (std::stoi(room->at(2)) == 0) {
 
-        seatsResult = database->execute(QueryName::SEAT_SELECT_BY_ROOM_ID, roomId);
+            std::string roomId[] = {room->at(0)};
 
-        std::vector<Seat*> seats;
+            seatsResult = database->execute(QueryName::SEAT_SELECT_BY_ROOM_ID, roomId);
 
-        for(auto seat : *seatsResult)
-            seats.push_back(new Seat(stoi(seat->at(3))/(seatsPerRow + 1) + 1, stoi(seat->at(3))));
+            std::vector<Seat *> seats;
 
-        size_t index = room->at(1).find(' ');
-        size_t number = std::stoi(room->at(1).substr(index + 1, std::string::npos));
+            for (auto seat : *seatsResult)
+                seats.push_back(new Seat(stoi(seat->at(3)) / (seatsPerRow + 1) + 1, stoi(seat->at(3))));
 
-        auto * roomDescription = new RoomDescription(number, number%3, room->at(1));
+            size_t index = room->at(1).find(' ');
+            size_t number = std::stoi(room->at(1).substr(index + 1, std::string::npos));
 
-        roomPool->returnInstance(new CinemaRoom(seats, roomDescription));
+            auto *roomDescription = new RoomDescription(number, number % 3, room->at(1));
+
+            roomPool->returnInstance(new CinemaRoom(seats, roomDescription));
+        }
     }
 }
 
