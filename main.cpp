@@ -23,6 +23,7 @@
 #include "command/CreateMovieCommand.h"
 #include "command/LoginUserCommand.h"
 #include "command/RegisterUserCommand.h"
+#include "command/DeleteSeance.h"
 
 #define SEATS_PER_ROW 10
 #define ADMIN "ROLE_ADMIN"
@@ -58,53 +59,14 @@ int main(int argc, char * argv[]){
 //        command->execute();
 //
 //    }
-
-//    MovieDescription * movieDescription = new MovieDescription();
 //
-//    command = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
-//
-//    command->execute();
+    Movie * movie = new Movie(1, "titanic", "direc",1999, 12, 13.22, "XDDD");
 
-    Command *userRegister = new RegisterUserCommand(database, "janko123", "jaknoPass123");
-    userRegister->execute();
+    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), movie, time(nullptr));
 
-    Command *logUser = new LoginUserCommand(database, "janko123", "jaknoPass123");
-//    Command *logUser = new LoginUserCommand(database, "janko123", "wrongPass");
+    command->execute();
 
-    logUser->execute();
-
-    bool loggedUser = dynamic_cast<LoginUserCommand *>(logUser)->isLogged();
-    if (!loggedUser)
-        std::cout << "Cannot log user" << std::endl;
-
-    Command *createMovie = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
-
-    createMovie->execute();
-
-    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
-    createMovie2->execute();
-
-
-    Command *listMovies = new ListMoviesCommand(database);
-    listMovies->execute();
-
-    auto moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
-
-    for (auto &movieRecord: moviesFromDb) {
-        movieRecord.printMovieInfo();
-    }
-
-    Command *deleteMovie = new DeleteMovieCommand(database, "Somth", ADMIN);
-    deleteMovie->execute();
-
-    std::cout << std::endl;
-
-    listMovies->execute();
-    moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
-
-    for (auto &movieRecord: moviesFromDb) {
-        movieRecord.printMovieInfo();
-    }
+    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
 
     database->close();
 }
