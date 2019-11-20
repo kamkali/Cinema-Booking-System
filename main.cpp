@@ -80,8 +80,12 @@ int main(int argc, char * argv[]){
     Command *createMovie = new CreateMovieCommand(database, "Tities", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
     createMovie->execute();
 
-    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", ADMIN);
-    createMovie2->execute();
+    auto film = (dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
+
+    film->printMovieInfo();
+
+//    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", ADMIN);
+//    createMovie2->execute();
 
 
     Command *listMovies = new ListMoviesCommand(database);
@@ -92,18 +96,12 @@ int main(int argc, char * argv[]){
     for (auto &movieRecord: moviesFromDb) {
         movieRecord.printMovieInfo();
     }
-//
-//    Command *deleteMovie = new DeleteMovieCommand(database, "Titanic1", ADMIN);
+
+//    Command *deleteMovie = new DeleteMovieCommand(database, "Tities", ADMIN);
 //    deleteMovie->execute();
 
     std::cout << std::endl;
 
-    listMovies->execute();
-    moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
-
-    for (auto &movieRecord: moviesFromDb) {
-        movieRecord.printMovieInfo();
-    }
 
     database->close();
 }
