@@ -17,8 +17,9 @@
 #include "command/InitializeRooms.h"
 #include "command/ReturnRoom.h"
 #include "command/SelectOccupiedRooms.h"
+#include "command/CreateSeance.h"
 
-#define SEATS_PER_ROW 10;
+#define SEATS_PER_ROW 10
 
 int main(int argc, char * argv[]){
 
@@ -32,24 +33,35 @@ int main(int argc, char * argv[]){
 
     command->execute();
 
-    command = new InitializeRooms(database, 10, 100, 10);
+    command = new InitializeRooms(database, 10, 100, SEATS_PER_ROW);
 
     command->execute();
 
     RoomFactory * roomPool = dynamic_cast<InitializeRooms *>(command)->getRoomPool();
 
-    command = new SelectOccupiedRooms(database, 100);
+    command = new SelectOccupiedRooms(database, SEATS_PER_ROW);
 
     command->execute();
 
-    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
+//    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
+//
+//    for(auto room: occupiedRooms) {
+//
+//        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
+//
+//        command->execute();
+//
+//    }
 
-    for(auto room: occupiedRooms) {
+    MovieDescription description = MovieDescription();
 
-        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
+    auto * movie = new Movie(1 ,"titanic", "brosman", 1999, 12, 23.2, description);
 
-        command->execute();
+    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), movie, time(nullptr));
 
-    }
+    command->execute();
+
+    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+
     database->close();
 }

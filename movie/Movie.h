@@ -12,6 +12,7 @@
 
 class Movie {
 private:
+    int id;
     std::string title;
     std::string director;
     int production_year;
@@ -20,7 +21,7 @@ private:
     MovieDescription description;
 
 public:
-    Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
+    Movie(int id, std::string title, std::string director, int productionYear, int price, double movieLength,
           MovieDescription description);
 
     const std::string &getTitle() const;
@@ -48,6 +49,10 @@ public:
     void setDescription(const MovieDescription &description);
 
     void printMovieInfo();
+
+    int getId() const;
+
+    void setId(int id);
 
 };
 

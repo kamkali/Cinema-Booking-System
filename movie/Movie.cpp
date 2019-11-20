@@ -74,9 +74,17 @@ void Movie::printMovieInfo() {
 
 }
 
-Movie::Movie(std::string title, std::string director, int productionYear, int price, double movieLength,
-             MovieDescription description) : title(std::move(title)), director(std::move(director)),
+Movie::Movie(int id, std::string title, std::string director, int productionYear, int price, double movieLength,
+             MovieDescription description) : id(id), title(std::move(title)), director(std::move(director)),
                                              production_year(productionYear),
                                              price(price), movie_length(movieLength),
                                              description(std::move(description)) {}
+
+int Movie::getId() const {
+    return id;
+}
+
+void Movie::setId(int id) {
+    Movie::id = id;
+}
 

@@ -11,16 +11,26 @@
 
 class CinemaRoom: public Room{
 private:
+    int id;
+    std::string name;
     std::vector<Seat *> seats;
     RoomDescription * description;
 
 public:
     CinemaRoom();
-    CinemaRoom( std::vector<Seat *> & seats, const RoomDescription * description);
+    CinemaRoom(int id, std::string name, std::vector<Seat *> & seats, const RoomDescription * description);
 
     std::vector<Seat *> & getSeats() override;
 
     RoomDescription getDescription() override;
+
+    int getId() const;
+
+    void setId(int id);
+
+    const std::string &getName() const;
+
+    void setName(const std::string &name);
 };
 
 

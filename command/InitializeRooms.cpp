@@ -39,14 +39,14 @@ void InitializeRooms::execute() {
             std::vector<Seat *> seats;
 
             for (auto seat : *seatsResult)
-                seats.push_back(new Seat(stoi(seat->at(3)) / (seatsPerRow + 1) + 1, stoi(seat->at(3))));
+                seats.push_back(new Seat(stoi(seat->at(0)) ,stoi(seat->at(3)) / (seatsPerRow + 1) + 1, stoi(seat->at(3))));
 
             size_t index = room->at(1).find(' ');
             size_t number = std::stoi(room->at(1).substr(index + 1, std::string::npos));
 
             auto *roomDescription = new RoomDescription(number, number % 3, room->at(1));
 
-            roomPool->returnInstance(new CinemaRoom(seats, roomDescription));
+            roomPool->returnInstance(new CinemaRoom(stoi(room->at(0)), room->at(1), seats, roomDescription));
         }
     }
 }

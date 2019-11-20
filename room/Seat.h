@@ -9,13 +9,17 @@
 
 class Seat {
 private:
+    int id;
     size_t row;
     size_t seatNumber;
 
 public:
     Seat() = default;
-    Seat(size_t row, size_t seatNumber);
+    Seat(int id, size_t row, size_t seatNumber);
 
+    int getId() const;
+
+    void setId(int id);
 };
 
 

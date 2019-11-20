@@ -11,26 +11,31 @@
 
 class Seance {
 private:
-    Movie showingMovie;
-    CinemaRoom showingRoom;
+    int id;
+    Movie * showingMovie;
+    Room * showingRoom;
     time_t showingStart{};
 
 public:
-    Seance(Movie showMovie, CinemaRoom showingRoom, time_t showingStart);
+    Seance(int id, Movie * showMovie, Room * showingRoom, time_t showingStart);
 
-    const Movie &getShowingMovie() const;
+    Movie *getShowingMovie() const;
 
-    void setShowingMovie(const Movie &showingMovie);
+    void setShowingMovie(Movie *showingMovie);
 
-    const CinemaRoom &getShowingRoom() const;
+    Room *getShowingRoom() const;
 
-    void setShowingRoom(const CinemaRoom &showingRoom);
+    void setShowingRoom(Room *showingRoom);
 
     time_t getShowingStart() const;
 
     void setShowingStart(time_t showingStart);
 
     void playCommercial();
+
+    int getId() const;
+
+    void setId(int id);
 };
 
 
