@@ -77,8 +77,7 @@ int main(int argc, char * argv[]){
     if (!loggedUser)
         std::cout << "Cannot log user" << std::endl;
 
-    Command *createMovie = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
-
+    Command *createMovie = new CreateMovieCommand(database, "Tities", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
     createMovie->execute();
 
     Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", ADMIN);
@@ -93,9 +92,9 @@ int main(int argc, char * argv[]){
     for (auto &movieRecord: moviesFromDb) {
         movieRecord.printMovieInfo();
     }
-
-    Command *deleteMovie = new DeleteMovieCommand(database, "Somth", ADMIN);
-    deleteMovie->execute();
+//
+//    Command *deleteMovie = new DeleteMovieCommand(database, "Titanic1", ADMIN);
+//    deleteMovie->execute();
 
     std::cout << std::endl;
 

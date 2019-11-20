@@ -6,8 +6,6 @@
 #include "CreateMovieCommand.h"
 
 
-
-
 void CreateMovieCommand::execute() {
     if (role == "ROLE_ADMIN") {
         std::string checkArg[] = {title};
@@ -19,9 +17,6 @@ void CreateMovieCommand::execute() {
                                   std::to_string(price), std::to_string(movie_length), movieDescription};
 
             std::vector<std::vector<std::string> *> *result = DB->execute(MOVIE_INSERT, args);
-
-
-//            auto createdMovie = new Movie();
 
             Database::deleteResult(result);
         }else{
