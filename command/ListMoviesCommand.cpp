@@ -17,7 +17,7 @@ void ListMoviesCommand::execute() {
                                                                                 descriptionId);
 
         auto description = new MovieDescription(movieDescription->at(0)->at(1));
-        auto *movie = new Movie(singleMovie->at(1), singleMovie->at(2),
+        auto *movie = new Movie(std::stoi(singleMovie->at(0)), singleMovie->at(1), singleMovie->at(2),
                                 std::stoi(singleMovie->at(3)), std::stoi(singleMovie->at(4)),
                                 std::stod(singleMovie->at(5)), *description);
         movies_vec.push_back(*movie);
