@@ -15,17 +15,14 @@ void CreateMovieCommand::execute() {
         std::vector<std::vector<std::string> *> *checkMovie = DB->execute(MOVIE_SELECT_BY_NAME, checkArg);
 
         if((*checkMovie).empty()){
-            std::string descriptionArgs[] = {movieDescription};
-
-            DB->execute(DESCRIPTION_MOVIE_INSERT, descriptionArgs);
-            std::vector<std::vector<std::string> *> *descResult = DB->execute(DESCRIPTION_MOVIE_SELECT);
-
             std::string args[] = {title, director, std::to_string(production_year),
-                                  std::to_string(price), std::to_string(movie_length), descResult->back()->at(0)};
+                                  std::to_string(price), std::to_string(movie_length), movieDescription};
 
             std::vector<std::vector<std::string> *> *result = DB->execute(MOVIE_INSERT, args);
 
-            Database::deleteResult(descResult);
+
+//            auto createdMovie = new Movie();
+
             Database::deleteResult(result);
         }else{
             std::cout << "Movie record already exists in database!" << std::endl;

@@ -58,11 +58,11 @@ void Movie::setMovieLength(double movieLength) {
 }
 
 
-const MovieDescription &Movie::getDescription() const {
+const std::string &Movie::getDescription() const {
     return description;
 }
 
-void Movie::setDescription(const MovieDescription &description) {
+void Movie::setDescription(const std::string &description) {
     Movie::description = description;
 }
 
@@ -70,12 +70,12 @@ void Movie::printMovieInfo() {
     std::cout << "Tytul: " << Movie::title << ", Rezyser: " << Movie::director << ", Rok produkcji: "
               << Movie::production_year;
     std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length;
-    std::cout << ", Opis: " << Movie::description.getDescription() << std::endl;
+    std::cout << ", Opis: " << Movie::description << std::endl;
 
 }
 
 Movie::Movie(int id, std::string title, std::string director, int productionYear, int price, double movieLength,
-             MovieDescription description) : id(id), title(std::move(title)), director(std::move(director)),
+             std::string description) : id(id), title(std::move(title)), director(std::move(director)),
                                              production_year(productionYear),
                                              price(price), movie_length(movieLength),
                                              description(std::move(description)) {}

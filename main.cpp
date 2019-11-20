@@ -59,9 +59,8 @@ int main(int argc, char * argv[]){
 //
 //    }
 
-    MovieDescription description = MovieDescription();
 
-    auto * movie = new Movie(1 ,"titanic", "brosman", 1999, 12, 23.2, description);
+    auto * movie = new Movie(1 ,"titanic", "brosman", 1999, 12, 23.2, "description");
 
     command = new CreateSeance(database, "seans 1", roomPool->getInstance(), movie, time(nullptr));
 

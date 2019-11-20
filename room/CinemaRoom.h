@@ -7,7 +7,6 @@
 
 #include <vector>
 #include "Room.h"
-#include "RoomDescription.h"
 
 class CinemaRoom: public Room{
 private:
