@@ -59,56 +59,12 @@ int main(int argc, char * argv[]){
 //
 //    }
 
-    MovieDescription description = MovieDescription();
+//    MovieDescription * movieDescription = new MovieDescription();
+//
+//    command = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
+//
+//    command->execute();
 
-    auto * movie = new Movie(1 ,"titanic", "brosman", 1999, 12, 23.2, description);
-
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), movie, time(nullptr));
-
-    command->execute();
-
-    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
-
-    Command *userRegister = new RegisterUserCommand(database, "janko123", "jaknoPass123");
-    userRegister->execute();
-
-    Command *logUser = new LoginUserCommand(database, "janko123", "jaknoPass123");
-//    Command *logUser = new LoginUserCommand(database, "janko123", "wrongPass");
-
-    logUser->execute();
-
-    bool loggedUser = dynamic_cast<LoginUserCommand *>(logUser)->isLogged();
-    if (!loggedUser)
-        std::cout << "Cannot log user" << std::endl;
-
-    Command *createMovie = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
-
-    createMovie->execute();
-
-    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
-    createMovie2->execute();
-
-
-    Command *listMovies = new ListMoviesCommand(database);
-    listMovies->execute();
-
-    auto moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
-
-    for (auto &movieRecord: moviesFromDb) {
-        movieRecord.printMovieInfo();
-    }
-
-    Command *deleteMovie = new DeleteMovieCommand(database, "Somth", ADMIN);
-    deleteMovie->execute();
-
-    std::cout << std::endl;
-
-    listMovies->execute();
-    moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
-
-    for (auto &movieRecord: moviesFromDb) {
-        movieRecord.printMovieInfo();
-    }
 
     database->close();
 }

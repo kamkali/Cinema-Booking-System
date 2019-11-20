@@ -8,7 +8,6 @@
 #include <string>
 #include <ctime>
 #include "../room/Room.h"
-#include "MovieDescription.h"
 
 class Movie {
 private:
