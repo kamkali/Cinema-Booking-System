@@ -37,7 +37,9 @@ void QueryLoader::loadQueries() {
             "user_insert",
             "user_select_by_name",
             "users_create",
-            "descriptions_movie_select"
+            "descriptions_movie_select",
+            "movie_select_all",
+            "descriptions_movie_select_by_id"
     };
 
     std::string temp;

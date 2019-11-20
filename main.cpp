@@ -48,18 +48,20 @@ int main(int argc, char *argv[]) {
 
     createMovie->execute();
 
-//    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
-//    createMovie2->execute();
+    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
+    createMovie2->execute();
 
 //    Command *deleteMovie = new DeleteMovieCommand(database, "Somth");
 //    deleteMovie->execute();
 
     Command *listMovies = new ListMoviesCommand(database);
-    command->execute();
+    listMovies->execute();
 
-    std::vector<Movie> moviesFromDb = dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec();
+    auto moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
 
-    std::cout << moviesFromDb.at(0).getTitle() << std::endl;
+    for (auto &movieRecord: moviesFromDb) {
+        movieRecord.printMovieInfo();
+    }
 
     database->close();
 }
