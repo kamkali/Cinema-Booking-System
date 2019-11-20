@@ -16,7 +16,6 @@ void InitializeCinemaSystem::execute() {
 
     Database::deleteResult(database->execute(QueryName::USERS_CREATE));
     Database::deleteResult(database->execute(QueryName::MOVIES_CREATE));
-    Database::deleteResult(database->execute(QueryName::DESCRIPTIONS_MOVIE_CREATE));
     Database::deleteResult(database->execute(QueryName::ROOMS_CREATE));
     Database::deleteResult(database->execute(QueryName::SEATS_CREATE));
     Database::deleteResult(database->execute(QueryName::SEANSES_CREATE));

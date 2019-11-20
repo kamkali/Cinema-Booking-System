@@ -9,9 +9,6 @@
 void QueryLoader::loadQueries() {
 
     static std::string queriesNames[]{
-            "description_movie_delete_by_id",
-            "description_movie_insert",
-            "descriptions_movie_create",
             "movie_delete_by_id",
             "movie_insert",
             "movie_select_by_id",
@@ -50,7 +47,7 @@ void QueryLoader::loadQueries() {
 
     std::string temp;
 
-    unsigned int enumValue = QueryName::DESCRIPTION_MOVIE_DELETE_BY_ID;
+    unsigned int enumValue = QueryName::MOVIE_DELETE_BY_ID;
 
     for(const auto& query:queriesNames){
         temp = loadSingleQuery(query);

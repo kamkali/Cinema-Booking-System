@@ -21,7 +21,6 @@ private:
     double movie_length;
     std::string movieDescription;
     std::string role;
-    Movie movie;
 
 public:
     CreateMovieCommand(Database *db, const std::string &title, const std::string &director, int productionYear,

@@ -59,14 +59,11 @@ int main(int argc, char * argv[]){
 //
 //    }
 
-
-    auto * movie = new Movie(1 ,"titanic", "brosman", 1999, 12, 23.2, "description");
-
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), movie, time(nullptr));
-
-    command->execute();
-
-    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+//    MovieDescription * movieDescription = new MovieDescription();
+//
+//    command = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
+//
+//    command->execute();
 
     Command *userRegister = new RegisterUserCommand(database, "janko123", "jaknoPass123");
     userRegister->execute();

@@ -13,15 +13,14 @@ private:
     int id;
     std::string name;
     std::vector<Seat *> seats;
-    RoomDescription * description;
+    size_t number{};
+    size_t floor{};
 
 public:
     CinemaRoom();
-    CinemaRoom(int id, std::string name, std::vector<Seat *> & seats, const RoomDescription * description);
+    CinemaRoom(int id, std::string name, std::vector<Seat *> & seats, size_t number, size_t floor);
 
     std::vector<Seat *> & getSeats() override;
-
-    RoomDescription getDescription() override;
 
     int getId() const;
 
@@ -30,6 +29,16 @@ public:
     const std::string &getName() const;
 
     void setName(const std::string &name);
+
+    void setSeats(const std::vector<Seat *> &seats);
+
+    size_t getNumber() const;
+
+    void setNumber(size_t number);
+
+    size_t getFloor() const;
+
+    void setFloor(size_t floor);
 };
 
 
