@@ -17,9 +17,9 @@ private:
     Room * room;
     Movie * movie;
     std::string name;
-    time_t showingStart;
+
 public:
-    CreateSeance(Database * database, std::string name,Room * room, Movie * movie, time_t showingStart);
+    CreateSeance(Database * database, std::string name,Room * room, Movie * movie);
     void execute() override;
     Seance * getSeance();
 };

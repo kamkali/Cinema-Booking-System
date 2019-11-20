@@ -18,7 +18,7 @@ void CreateSeance::execute() {
 
     int seanceId = stoi(seansResult->at(0)->at(0));
 
-    seance = new Seance(seanceId, movie, room, showingStart);
+    seance = new Seance(seanceId, movie, room);
 
     std::string argsRoomUpdate[] = {dynamic_cast<CinemaRoom *>(room)->getName(), seansResult->at(0)->at(0),
                                     std::to_string(dynamic_cast<CinemaRoom *>(room)->getId())};
@@ -30,7 +30,7 @@ Seance *CreateSeance::getSeance() {
     return seance;
 }
 
-CreateSeance::CreateSeance(Database *database, std::string name, Room *room, Movie *movie, time_t showingStart):
-database(database), name(std::move(name)), room(room), movie(movie), showingStart(showingStart) {
+CreateSeance::CreateSeance(Database *database, std::string name, Room *room, Movie *movie):
+database(database), name(std::move(name)), room(room), movie(movie) {
     seance = nullptr;
 }
