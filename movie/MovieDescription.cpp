@@ -5,7 +5,13 @@
 #include "MovieDescription.h"
 
 std::string MovieDescription::getDescription() {
-    return std::string();
+    return description;
+}
+
+MovieDescription::MovieDescription(const std::string &description) : description(description) {}
+
+void MovieDescription::setDescription(const std::string &description) {
+    MovieDescription::description = description;
 }
 
 MovieDescription::MovieDescription() = default;

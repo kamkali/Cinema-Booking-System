@@ -69,7 +69,7 @@ void Movie::setDescription(const MovieDescription &description) {
 void Movie::printMovieInfo() {
     std::cout << "Tytul: " << Movie::title << ", Rezyser: " << Movie::director << ", Rok produkcji: "
               << Movie::production_year;
-    std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length << ", Start o godz: ";
+    std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length;
     std::cout << ", Opis: " << Movie::description.getDescription() << std::endl;
 
 }
