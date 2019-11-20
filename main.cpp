@@ -60,13 +60,19 @@ int main(int argc, char * argv[]){
 //
 //    }
 //
-    Movie * movie = new Movie(1, "titanic", "direc",1999, 12, 13.22, "XDDD");
+    Command *createMovie = new CreateMovieCommand(database, "Tities", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
 
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), movie, time(nullptr));
+    createMovie->execute();
+
+    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie(), time(nullptr));
 
     command->execute();
 
     Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+
+    command = new DeleteSeance(database, seance, roomPool, ADMIN);
+
+    command->execute();
 
     database->close();
 }

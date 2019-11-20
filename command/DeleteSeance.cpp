@@ -10,15 +10,13 @@
 void DeleteSeance::execute() {
 
     if(role == "ROLE_ADMIN") {
-        Movie *movie = seance->getShowingMovie();
-
-        std::string args[] = {std::to_string(movie->getId())};
-
-        Database::deleteResult(database->execute(QueryName::MOVIE_DELETE_BY_ID, args));
-
         Command *command = new ReturnRoom(database, roomPool, seance->getShowingRoom(), role);
 
         command->execute();
+
+        std::string arg[] = {std::to_string(seance->getId())};
+
+        Database::deleteResult(database->execute(QueryName::SEANS_DELETE, arg));
     } else {
         std::cout << "User is not an admin" << std::endl;
     }
