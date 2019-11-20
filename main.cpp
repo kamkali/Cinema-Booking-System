@@ -71,13 +71,16 @@ int main(int argc, char * argv[]){
 
     Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
 
-    command = new OrderSeat(database, seance, 10, 1);
+    for(int i = 1; i < 20; i++) {
 
-    command->execute();
+        command = new OrderSeat(database, seance, i + 10, i * 2);
 
-    command = new DeleteSeance(database, seance, roomPool, ADMIN);
+        command->execute();
+    }
 
-    command->execute();
+//    command = new DeleteSeance(database, seance, roomPool, ADMIN);
+//
+//    command->execute();
 
     database->close();
 }

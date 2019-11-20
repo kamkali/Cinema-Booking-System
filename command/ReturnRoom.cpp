@@ -5,7 +5,9 @@
 #include "ReturnRoom.h"
 #include "../room/CinemaRoom.h"
 
-#include <utility>
+#include <utility>    command = new DeleteSeance(database, seance, roomPool, ADMIN);
+
+    command->execute();
 
 void ReturnRoom::execute() {
     if(role == "ROLE_ADMIN") {
@@ -23,21 +25,9 @@ void ReturnRoom::execute() {
 
         std::vector<std::vector<std::string> *> *seatsInRoom = database->execute(QueryName::SEAT_SELECT_BY_ROOM_ID, seatSelectArg);
 
-        std::string * seatUpdateArgs;
+        std::string seatUpdateArgs[] = {"0", std::to_string(roomId)};
 
-        for(auto seat:*seatsInRoom){
-
-            seatUpdateArgs = new std::string[4];
-
-            seatUpdateArgs[0] = std::to_string(roomId);
-            seatUpdateArgs[1] = "0";
-            seatUpdateArgs[2] = seat->at(3);
-            seatUpdateArgs[3] = std::to_string(roomId);
-
-            Database::deleteResult(database->execute(QueryName::SEAT_UPDATE_BY_ROOM_ID, seatUpdateArgs));
-
-            delete[] seatUpdateArgs;
-        }
+        Database::deleteResult(database->execute(QueryName::SEAT_UPDATE_BY_ROOM_ID, seatUpdateArgs));
 
         Database::deleteResult(seatsInRoom);
 
