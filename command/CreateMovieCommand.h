@@ -24,8 +24,8 @@ private:
     Movie *createdMovie;
 
 public:
-    CreateMovieCommand(Database *db, const std::string &title, const std::string &director, int productionYear,
-                       double price, double movieLength, const std::string &movieDescription, const std::string &role);
+    CreateMovieCommand(Database *db, std::string title, std::string director, int productionYear,
+                       double price, double movieLength, std::string movieDescription, std::string role);
 
     void execute() override;
 

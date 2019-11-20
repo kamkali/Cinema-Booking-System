@@ -23,7 +23,7 @@
 #include "command/CreateMovieCommand.h"
 #include "command/LoginUserCommand.h"
 #include "command/RegisterUserCommand.h"
-#include "command/ListSeancesCommand.h"
+#include "command/DeleteSeance.h"
 
 #define SEATS_PER_ROW 10
 #define ADMIN "ROLE_ADMIN"
@@ -50,8 +50,8 @@ int main(int argc, char * argv[]){
 
     command->execute();
 
-    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
-
+//    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
+//
 //    for(auto room: occupiedRooms) {
 //
 //        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
@@ -59,62 +59,20 @@ int main(int argc, char * argv[]){
 //        command->execute();
 //
 //    }
-
 //
-//    command = new CreateMovieCommand(database, "Titanic1", "Brosman_T", 1999, 12, 14.32, "Description", "ROLE_ADMIN");
-//
-//    command->execute();
-
-    Command *userRegister = new RegisterUserCommand(database, "janko123", "jaknoPass123");
-    userRegister->execute();
-
-    Command *logUser = new LoginUserCommand(database, "janko123", "jaknoPass123");
-//    Command *logUser = new LoginUserCommand(database, "janko123", "wrongPass");
-
-    logUser->execute();
-
-    bool loggedUser = dynamic_cast<LoginUserCommand *>(logUser)->isLogged();
-    if (!loggedUser)
-        std::cout << "Cannot log user" << std::endl;
-
     Command *createMovie = new CreateMovieCommand(database, "Tities", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
+
     createMovie->execute();
 
-    auto film = (dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
+    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie(), time(nullptr));
 
-    film->printMovieInfo();
+    command->execute();
 
-//    Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", ADMIN);
-//    createMovie2->execute();
+    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
 
+    command = new DeleteSeance(database, seance, roomPool, ADMIN);
 
-    Command *listMovies = new ListMoviesCommand(database);
-    listMovies->execute();
-
-    auto moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
-
-    for (auto &movieRecord: moviesFromDb) {
-        movieRecord.printMovieInfo();
-    }
-
-//    Command *deleteMovie = new DeleteMovieCommand(database, "Tities", ADMIN);
-//    deleteMovie->execute();
-
-    std::cout << std::endl;
-    std::cout << std::endl;
-
-//TODO: need Seances to test it
-    Command *listSeances = new ListSeancesCommand(database, SEATS_PER_ROW, occupiedRooms);
-    listSeances->execute();
-
-    auto seancesFromDb = (dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec());
-
-
-    for (auto &singleSeance: seancesFromDb){
-        std::cout << singleSeance.getId() << " ";
-        singleSeance.getShowingMovie()->printMovieInfo();
-        std::cout << singleSeance.getShowingRoom() << std::endl;
-    }
+    command->execute();
 
     database->close();
 }

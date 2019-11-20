@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <utility>
 #include "CreateMovieCommand.h"
 
 
@@ -12,10 +13,7 @@ void CreateMovieCommand::execute() {
 
         std::vector<std::vector<std::string> *> *checkMovie = DB->execute(MOVIE_SELECT_BY_NAME, checkArg);
 
-        createdMovie = new Movie(std::stoi(checkMovie->at(0)->at(0)), checkMovie->at(0)->at(1),
-                                 checkMovie->at(0)->at(2), std::stoi(checkMovie->at(0)->at(3)),
-                                 std::stoi(checkMovie->at(0)->at(4)), std::stod(checkMovie->at(0)->at(5)),
-                                 checkMovie->at(0)->at(6));
+
 
         if ((*checkMovie).empty()) {
             std::string args[] = {title, director, std::to_string(production_year),
@@ -31,7 +29,10 @@ void CreateMovieCommand::execute() {
             Database::deleteResult(result);
             Database::deleteResult(savedId);
         } else {
-            std::cout << "Movie record already exists in database!" << std::endl;
+            createdMovie = new Movie(std::stoi(checkMovie->at(0)->at(0)), checkMovie->at(0)->at(1),
+                                     checkMovie->at(0)->at(2), std::stoi(checkMovie->at(0)->at(3)),
+                                     std::stoi(checkMovie->at(0)->at(4)), std::stod(checkMovie->at(0)->at(5)),
+                                     checkMovie->at(0)->at(6));
         }
     } else {
         std::cout << "User is not an admin" << std::endl;
@@ -40,20 +41,20 @@ void CreateMovieCommand::execute() {
 
 }
 
-CreateMovieCommand::CreateMovieCommand(Database *db, const std::string &title, const std::string &director,
+CreateMovieCommand::CreateMovieCommand(Database *db, std::string title, std::string director,
                                        int productionYear, double price, double movieLength,
-                                       const std::string &movieDescription, const std::string &role) : DB(db),
-                                                                                                       title(title),
-                                                                                                       director(
-                                                                                                               director),
+                                       std::string movieDescription, std::string role) : DB(db),
+                                                                                                       title(std::move(title)),
+                                                                                                       director(std::move(
+                                                                                                               director)),
                                                                                                        production_year(
                                                                                                                productionYear),
                                                                                                        price(price),
                                                                                                        movie_length(
                                                                                                                movieLength),
-                                                                                                       movieDescription(
-                                                                                                               movieDescription),
-                                                                                                       role(role) {}
+                                                                                                       movieDescription(std::move(
+                                                                                                               movieDescription)),
+                                                                                                       role(std::move(role)) {}
 
 Movie *CreateMovieCommand::getCreatedMovie() const {
     return createdMovie;

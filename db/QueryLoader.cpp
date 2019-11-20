@@ -34,14 +34,13 @@ void QueryLoader::loadQueries() {
             "seat_insert",
             "seat_select_by_room_id",
             "seat_select_by_room_id_and_number_in_room",
+            "seat_update_by_room_id",
             "seats_create",
             "user_delete_by_id",
             "user_insert",
             "user_select_by_name",
             "users_create",
-            "descriptions_movie_select",
             "movie_select_all",
-            "descriptions_movie_select_by_id",
             "seans_select_all"
     };
 
