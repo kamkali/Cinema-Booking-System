@@ -1,1 +1,0 @@
-SELECT * FROM movie_descriptions WHERE movie_description_id = 'movie_description_id';

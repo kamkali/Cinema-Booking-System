@@ -3,6 +3,7 @@
 //
 
 #include "ReturnRoom.h"
+#include "../room/CinemaRoom.h"
 
 #include <utility>
 
@@ -10,7 +11,7 @@ void ReturnRoom::execute() {
     if(role == "ROLE_ADMIN") {
         roomPool->returnInstance(room);
 
-        std::string arg[] = {room->getDescription().getName()};
+        std::string arg[] = {dynamic_cast<CinemaRoom *>(room)->getName()};
 
         std::vector<std::vector<std::string> *> *result = database->execute(QueryName::ROOM_SELECT_BY_NAME, arg);
 
@@ -18,7 +19,7 @@ void ReturnRoom::execute() {
 
         Database::deleteResult(result);
 
-        std::string args[] = {room->getDescription().getName(), "0", std::to_string(roomId)};
+        std::string args[] = {dynamic_cast<CinemaRoom *>(room)->getName(), "0", std::to_string(roomId)};
 
         Database::deleteResult(database->execute(QueryName::ROOM_UPDATE_BY_ID, args));
     } else{

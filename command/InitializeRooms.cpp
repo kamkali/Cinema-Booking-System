@@ -44,7 +44,7 @@ void InitializeRooms::execute() {
             size_t index = room->at(1).find(' ');
             size_t number = std::stoi(room->at(1).substr(index + 1, std::string::npos));
 
-            roomPool->returnInstance(new CinemaRoom(stoi(room->at(0)), room->at(1), seats, number, number % 3);
+            roomPool->returnInstance(new CinemaRoom(stoi(room->at(0)), room->at(1), seats, number, number % 3));
         }
     }
 }
