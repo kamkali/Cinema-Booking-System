@@ -21,6 +21,7 @@ private:
     double movie_length;
     std::string movieDescription;
     std::string role;
+    Movie *createdMovie;
 
 public:
     CreateMovieCommand(Database *db, const std::string &title, const std::string &director, int productionYear,
@@ -28,6 +29,7 @@ public:
 
     void execute() override;
 
+    Movie *getCreatedMovie() const;
 };
 
 

@@ -5,8 +5,5 @@ CREATE TABLE movies(
                       production_year integer NOT NULL,
                       price integer NOT NULL,
                       movie_length real NOT NULL,
-                      movie_description_id INTEGER,
-
-                      FOREIGN KEY(movie_description_id) REFERENCES movie_description(movie_description_id)
-
+                      movie_description VARCHAR[255]
 );
