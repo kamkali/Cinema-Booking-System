@@ -5,9 +5,7 @@
 #include "ReturnRoom.h"
 #include "../room/CinemaRoom.h"
 
-#include <utility>    command = new DeleteSeance(database, seance, roomPool, ADMIN);
-
-    command->execute();
+#include <utility>
 
 void ReturnRoom::execute() {
     if(role == "ROLE_ADMIN") {
