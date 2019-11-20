@@ -17,11 +17,11 @@ private:
     int production_year;
     int price;
     double movie_length;
-    MovieDescription description;
+    std::string description;
 
 public:
     Movie(int id, std::string title, std::string director, int productionYear, int price, double movieLength,
-          MovieDescription description);
+          std::string description);
 
     const std::string &getTitle() const;
 
@@ -43,9 +43,9 @@ public:
 
     void setMovieLength(double movieLength);
 
-    const MovieDescription &getDescription() const;
+    const std::string &getDescription() const;
 
-    void setDescription(const MovieDescription &description);
+    void setDescription(const std::string &description);
 
     void printMovieInfo();
 

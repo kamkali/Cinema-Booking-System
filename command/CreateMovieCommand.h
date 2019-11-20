@@ -8,6 +8,7 @@
 
 #include "Command.h"
 #include "../db/Database.h"
+#include "../movie/Movie.h"
 #include <string>
 
 class CreateMovieCommand: public Command {

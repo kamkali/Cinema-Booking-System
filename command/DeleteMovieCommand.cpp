@@ -17,9 +17,7 @@ void DeleteMovieCommand::execute() {
             std::cout << "There is no movie of title " << movieTitle << std::endl;
         } else {
             std::string movieIdToDelete[] = {checkMovie->at(0)->at(0)};
-            std::string movieDescriptionIdToDelete[] = {checkMovie->at(0)->at(6)};
             DB->execute(MOVIE_DELETE_BY_ID, movieIdToDelete);
-            DB->execute(DESCRIPTION_MOVIE_DELETE_BY_ID, movieDescriptionIdToDelete);
         }
 
         Database::deleteResult(checkMovie);
