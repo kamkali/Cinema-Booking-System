@@ -8,6 +8,7 @@
 ListMoviesCommand::ListMoviesCommand(Database *db) : DB(db) {}
 
 void ListMoviesCommand::execute() {
+    movies_vec.clear();
     std::vector<std::vector<std::string> *> *allMovies = DB->execute(MOVIE_SELECT_ALL);
 
     for (auto singleMovie: *allMovies) {
@@ -20,7 +21,10 @@ void ListMoviesCommand::execute() {
                                 std::stoi(singleMovie->at(3)), std::stoi(singleMovie->at(4)),
                                 std::stod(singleMovie->at(5)), *description);
         movies_vec.push_back(*movie);
+
+        Database::deleteResult(movieDescription);
     }
+    Database::deleteResult(allMovies);
 }
 
 const std::vector<Movie> &ListMoviesCommand::getMoviesVec() const {

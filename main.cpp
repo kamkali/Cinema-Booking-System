@@ -20,6 +20,8 @@
 #include "command/DeleteMovieCommand.h"
 #include "command/ListMoviesCommand.h"
 
+#define ADMIN "ROLE_ADMIN"
+
 int main(int argc, char *argv[]) {
 
     Command *command = new InitializeCinemaSystem("cinema");
@@ -51,13 +53,23 @@ int main(int argc, char *argv[]) {
     Command *createMovie2 = new CreateMovieCommand(database, "Somth", "Hehe", 3000, 1122, 112, "Other Descript", "ROLE_ADMIN");
     createMovie2->execute();
 
-//    Command *deleteMovie = new DeleteMovieCommand(database, "Somth");
-//    deleteMovie->execute();
 
     Command *listMovies = new ListMoviesCommand(database);
     listMovies->execute();
 
     auto moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
+
+    for (auto &movieRecord: moviesFromDb) {
+        movieRecord.printMovieInfo();
+    }
+
+    Command *deleteMovie = new DeleteMovieCommand(database, "Somth", ADMIN);
+    deleteMovie->execute();
+
+    std::cout << std::endl;
+
+    listMovies->execute();
+    moviesFromDb = (dynamic_cast<ListMoviesCommand *>(listMovies)->getMoviesVec());
 
     for (auto &movieRecord: moviesFromDb) {
         movieRecord.printMovieInfo();
