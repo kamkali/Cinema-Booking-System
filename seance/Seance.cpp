@@ -13,7 +13,7 @@
 using namespace std;
 
 
-Seance::Seance(int id, Movie * showingMovie, Room * showingRoom, time_t showingStart) : id(id), showingMovie(showingMovie), showingRoom(showingRoom), showingStart(showingStart) {}
+Seance::Seance(int id, Movie * showingMovie, Room * showingRoom) : id(id), showingMovie(showingMovie), showingRoom(showingRoom){}
 
 
 
@@ -61,13 +61,5 @@ Room *Seance::getShowingRoom() const {
 
 void Seance::setShowingRoom(Room *showingRoom) {
     Seance::showingRoom = showingRoom;
-}
-
-time_t Seance::getShowingStart() const {
-    return showingStart;
-}
-
-void Seance::setShowingStart(time_t showingStart) {
-    Seance::showingStart = showingStart;
 }
 

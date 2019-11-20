@@ -24,6 +24,7 @@
 #include "command/LoginUserCommand.h"
 #include "command/RegisterUserCommand.h"
 #include "command/DeleteSeance.h"
+#include "command/OrderSeat.h"
 
 #define SEATS_PER_ROW 10
 #define ADMIN "ROLE_ADMIN"
@@ -64,11 +65,15 @@ int main(int argc, char * argv[]){
 
     createMovie->execute();
 
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie(), time(nullptr));
+    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
 
     command->execute();
 
     Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+
+    command = new OrderSeat(database, seance, 10, 1);
+
+    command->execute();
 
     command = new DeleteSeance(database, seance, roomPool, ADMIN);
 

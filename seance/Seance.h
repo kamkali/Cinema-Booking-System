@@ -14,10 +14,9 @@ private:
     int id;
     Movie * showingMovie;
     Room * showingRoom;
-    time_t showingStart{};
 
 public:
-    Seance(int id, Movie * showMovie, Room * showingRoom, time_t showingStart);
+    Seance(int id, Movie * showMovie, Room * showingRoom);
 
     Movie *getShowingMovie() const;
 
@@ -26,10 +25,6 @@ public:
     Room *getShowingRoom() const;
 
     void setShowingRoom(Room *showingRoom);
-
-    time_t getShowingStart() const;
-
-    void setShowingStart(time_t showingStart);
 
     void playCommercial();
 

@@ -1,0 +1,1 @@
+UPDATE seats SET user_id = 'user_id' WHERE seat_id = 'seat_id'
