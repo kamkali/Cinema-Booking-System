@@ -25,6 +25,16 @@ void listSeances(Database *db, vector<Room *> occupiedRooms){
     }
 }
 
+void listMovies(Database *db){
+    Command * showMovies = new ListMoviesCommand(db);
+    showMovies->execute();
+
+    auto moviesList = dynamic_cast<ListMoviesCommand *>(showMovies)->getMoviesVec();
+    for (auto movie: moviesList){
+        movie.printMovieInfo();
+    }
+}
+
 //void showAdminMenu(){
 //    cout <<
 //}
