@@ -39,7 +39,7 @@ void listMovies(Database *db){
 //    cout <<
 //}
 
-void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
+void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
     //order Seats at Seance
     int pick;
     bool menuDummy{true};
