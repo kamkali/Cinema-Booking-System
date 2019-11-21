@@ -17,7 +17,7 @@ set(SOURCE_FILES main.cpp room/CinemaRoom.cpp room/CinemaRoom.h room/Seat.cpp ro
         command/DeleteSeance.cpp command/DeleteSeance.h command/ListSeancesCommand.cpp command/ListSeancesCommand.h
         command/CreateMovieCommand.h command/DeleteMovieCommand.cpp command/DeleteMovieCommand.h command/ListMoviesCommand.cpp
         command/ListMoviesCommand.h command/DeleteSeance.cpp command/DeleteSeance.h command/ListSeancesCommand.cpp
-        command/ListSeancesCommand.h command/SeancePropertiesCommand.cpp command/SeancePropertiesCommand.h workflow.h)
+        command/ListSeancesCommand.h command/SeancePropertiesCommand.cpp command/SeancePropertiesCommand.h workflow.h command/SelectMovieCommand.cpp command/SelectMovieCommand.h)
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(simple_example ${SOURCE_FILES})

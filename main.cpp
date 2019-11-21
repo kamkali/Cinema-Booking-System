@@ -86,7 +86,7 @@ int main(int argc, char * argv[]){
     command->execute();
 
     if(dynamic_cast<LoginUserCommand *>(command)->isLogged()){
-
+        showAdminMenu(db, roomPool, &occupiedRooms);
     } else{
         cout << "You are no authorized!" << endl;
         cout << "Closing..." << endl;
