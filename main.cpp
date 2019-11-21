@@ -94,7 +94,7 @@ int main(int argc, char * argv[]){
         if(isAdmin)
             showAdminMenu(db, roomPool, &occupiedRooms);
         else
-            showUserMenu(db, roomPool, occupiedRooms, ROWS_NUMBER, userId);
+            showUserMenu(db, occupiedRooms, ROWS_NUMBER, userId);
 
     } else{
         cout << "You are no authorized!" << endl;

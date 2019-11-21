@@ -168,7 +168,6 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                 "\n(3) Exit\n" << endl;
         cout << "~: ";
         cin >> pick;
-        assert(isnumber(pick));
 
         if (pick == 1) {
             Command * listSeances = new ListSeancesCommand(db, &occupiedRooms);
@@ -186,7 +185,6 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                     cout << "~: ";
 
                     cin >> pick;
-                    assert(isnumber(pick));
 
                     switch(pick)
                     {
@@ -208,10 +206,10 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                             cout << "Please pick a free seat(Column, then Row): \n" << endl;
                             cout << "~: ";
                             cin >> seatNumberColumn;
-                            assert(isnumber(seatNumberColumn));
+
                             cout << "~: ";
                             cin >> seatNumberRow;
-                            assert(isnumber(seatNumberColumn));
+
                             Command * placeOrder = new OrderSeat(db, seance, (seatNumberRow*10+seatNumberColumn)-10, userId);
                             placeOrder->execute();
                             cout << "Order has been placed!" << endl;
@@ -221,6 +219,9 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                             menuDummy = false;
                         case 4:
                             seanceDummy = false;
+                            break;
+                        default:
+                            cout << "Choose proper option!" << endl;
                             break;
                     }
                 }
