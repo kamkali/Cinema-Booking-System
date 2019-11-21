@@ -31,6 +31,6 @@ Seance *CreateSeance::getSeance() {
 }
 
 CreateSeance::CreateSeance(Database *database, std::string name, Room *room, Movie *movie):
-database(database), name(std::move(name)), room(room), movie(movie){
+database(database), name(std::move(name)), room(room), movie(movie) {
     seance = nullptr;
 }

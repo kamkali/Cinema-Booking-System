@@ -12,11 +12,12 @@
 class Seance {
 private:
     int id;
-    Movie * showingMovie;
-    Room * showingRoom;
+    Movie *showingMovie;
+    Room *showingRoom;
+
 
 public:
-    Seance(int id, Movie * showMovie, Room * showingRoom);
+    Seance(int id, Movie *showMovie, Room *showingRoom);
 
     Movie *getShowingMovie() const;
 

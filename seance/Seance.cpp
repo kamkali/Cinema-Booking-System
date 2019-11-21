@@ -13,9 +13,9 @@
 using namespace std;
 
 
-Seance::Seance(int id, Movie * showingMovie, Room * showingRoom) : id(id), showingMovie(showingMovie), showingRoom(showingRoom){}
-
-
+Seance::Seance(int id, Movie *showingMovie, Room *showingRoom) : id(id), showingMovie(showingMovie),
+                                                                 showingRoom(showingRoom) {
+}
 
 
 void Seance::playCommercial() {
@@ -31,12 +31,12 @@ void Seance::playCommercial() {
     cout << "#                 ( `   )_                                  #" << endl;
     cout << "#                (    )    `)                               #" << endl;
     cout << "#              (_   (_ .  _) _)                             #" << endl;
-    cout << "#                                             _             #"<<endl;
-    cout<<"#                                            (  )           #"<<endl;
-    cout<<"#             _ .                         ( `  ) . )        #"<<endl;
-    cout<<"#           (  _ )_                      (_, _(  ,_)_)      #"<<endl;
-    cout<<"#         (_  _(_ ,)                                        #"<<endl;
-    cout<<"LINIE LOTNICZE KUGLAN&KALI AIRLINES >>>>> KUP BILET NA STRONIE WWW.KUGLANKALIS.COM"<<endl;
+    cout << "#                                             _             #" << endl;
+    cout << "#                                            (  )           #" << endl;
+    cout << "#             _ .                         ( `  ) . )        #" << endl;
+    cout << "#           (  _ )_                      (_, _(  ,_)_)      #" << endl;
+    cout << "#         (_  _(_ ,)                                        #" << endl;
+    cout << "LINIE LOTNICZE KUGLAN&KALI AIRLINES >>>>> KUP BILET NA STRONIE WWW.KUGLANKALIS.COM" << endl;
 }
 
 int Seance::getId() const {
