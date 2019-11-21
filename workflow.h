@@ -160,8 +160,7 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
     } while (order != 0);
 }
 
-void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
-    //order Seats at Seance
+void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
     int pick;
     bool menuDummy{true};
     while (menuDummy) {
@@ -169,6 +168,7 @@ void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRo
                 "\n(3) Exit\n" << endl;
         cout << "~: ";
         cin >> pick;
+        assert(isnumber(pick));
 
         if (pick == 1) {
             Command * listSeances = new ListSeancesCommand(db, &occupiedRooms);
@@ -186,6 +186,7 @@ void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRo
                     cout << "~: ";
 
                     cin >> pick;
+                    assert(isnumber(pick));
 
                     switch(pick)
                     {
@@ -207,10 +208,13 @@ void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRo
                             cout << "Please pick a free seat(Column, then Row): \n" << endl;
                             cout << "~: ";
                             cin >> seatNumberColumn;
+                            assert(isnumber(seatNumberColumn));
                             cout << "~: ";
                             cin >> seatNumberRow;
+                            assert(isnumber(seatNumberColumn));
                             Command * placeOrder = new OrderSeat(db, seance, (seatNumberRow*10+seatNumberColumn)-10, userId);
                             placeOrder->execute();
+                            cout << "Order has been placed!" << endl;
                         }
                             break;
                         case 5:
