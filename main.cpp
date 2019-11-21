@@ -24,6 +24,7 @@
 #include "command/LoginUserCommand.h"
 #include "command/RegisterUserCommand.h"
 #include "command/DeleteSeance.h"
+#include "command/ListSeancesCommand.h"
 
 #define SEATS_PER_ROW 10
 #define ADMIN "ROLE_ADMIN"
@@ -50,29 +51,49 @@ int main(int argc, char * argv[]){
 
     command->execute();
 
-//    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
-//
-//    for(auto room: occupiedRooms) {
-//
-//        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
-//
-//        command->execute();
-//
-//    }
-//
+    std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
+
+    for(auto room: occupiedRooms) {
+
+        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
+
+        command->execute();
+
+    }
+
     Command *createMovie = new CreateMovieCommand(database, "Tities", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
 
     createMovie->execute();
 
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie(), time(nullptr));
+    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
 
     command->execute();
 
     Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
 
-    command = new DeleteSeance(database, seance, roomPool, ADMIN);
+//    command = new DeleteSeance(database, seance, roomPool, ADMIN);
 
-    command->execute();
+//    command->execute();
+
+
+//    Command *deleteMovie = new DeleteMovieCommand(database, "Tities", ADMIN);
+//    deleteMovie->execute();
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+//TODO: need Seances to test it
+    Command *listSeances = new ListSeancesCommand(database, SEATS_PER_ROW, occupiedRooms);
+    listSeances->execute();
+
+    auto seancesFromDb = (dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec());
+
+
+    for (auto &singleSeance: seancesFromDb){
+        std::cout << singleSeance.getId() << " ";
+        singleSeance.getShowingMovie()->printMovieInfo();
+        std::cout << singleSeance.getShowingRoom() << std::endl;
+    }
 
     database->close();
 }

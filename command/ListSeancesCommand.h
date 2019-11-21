@@ -18,8 +18,8 @@ private:
     std::vector<Room*> occupiedRooms;
 
 public:
-    ListSeancesCommand(Database *db, int seatsPerRow,
-                       const std::vector<Room *> &occupiedRooms);
+
+    ListSeancesCommand(Database *db, int seatsPerRow, const std::vector<Room *> &occupiedRooms);
 
     void execute() override;
 
