@@ -8,6 +8,7 @@
 
 #include "../movie/Movie.h"
 #include "../room/CinemaRoom.h"
+#include "../db/Database.h"
 
 class Seance {
 private:
@@ -32,7 +33,9 @@ public:
     int getId() const;
 
     void setId(int id);
-};
 
+    void printSeats(Database *database, int seatsInRow);
+
+};
 
 #endif //SIMPLE_EXAMPLE_SEANCE_H
