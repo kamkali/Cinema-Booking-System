@@ -23,16 +23,8 @@ void CreateMovieCommand::execute() {
 
             std::vector<std::vector<std::string> *> *savedId = DB->execute(MOVIE_SELECT_ALL);
 
-            createdMovie = new Movie(std::stoi(savedId->at(0)->at(0)), title, director, production_year, price,
-                                     movie_length, movieDescription);
-
             Database::deleteResult(result);
             Database::deleteResult(savedId);
-        } else {
-            createdMovie = new Movie(std::stoi(checkMovie->at(0)->at(0)), checkMovie->at(0)->at(1),
-                                     checkMovie->at(0)->at(2), std::stoi(checkMovie->at(0)->at(3)),
-                                     std::stoi(checkMovie->at(0)->at(4)), std::stod(checkMovie->at(0)->at(5)),
-                                     checkMovie->at(0)->at(6));
         }
     } else {
         std::cout << "User is not an admin" << std::endl;
@@ -56,6 +48,3 @@ CreateMovieCommand::CreateMovieCommand(Database *db, std::string title, std::str
                                                                                                                movieDescription)),
                                                                                                        role(std::move(role)) {}
 
-Movie *CreateMovieCommand::getCreatedMovie() const {
-    return createdMovie;
-}

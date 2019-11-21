@@ -89,6 +89,7 @@ int main(int argc, char * argv[]){
         int userId = dynamic_cast<LoginUserCommand *>(command)->getUserId();
 
         showUserMenu(db, roomPool, occupiedRooms, ROWS_NUMBER, userId);
+        showAdminMenu(db, roomPool, &occupiedRooms);
     } else{
         cout << "You are no authorized!" << endl;
         cout << "Closing..." << endl;

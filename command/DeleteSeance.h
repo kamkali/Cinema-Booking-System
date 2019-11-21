@@ -14,11 +14,12 @@
 class DeleteSeance: public Command {
 private:
     Database * database;
-    Seance * seance;
+    std::string seanceName;
     RoomFactory * roomPool;
+    std::vector<Room *> * occupiedRooms;
     std::string role;
 public:
-    DeleteSeance(Database *database, Seance *seance, RoomFactory *roomPool, std::string role);
+    DeleteSeance(Database *database, std::string seanceName, RoomFactory *roomPool, std::vector<Room*> * occupiedRooms, std::string role);
     void execute() override;
 };
 
