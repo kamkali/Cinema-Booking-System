@@ -65,11 +65,15 @@ int main(int argc, char * argv[]){
 
     createMovie->execute();
 
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
+    if(roomPool->getInstance() != nullptr) {
+        command = new CreateSeance(database, "seans 1", roomPool->getInstance(),
+                                   dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
+        command->execute();
 
-    command->execute();
+        Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+    }
 
-    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+
 
 //    command = new DeleteSeance(database, seance, roomPool, ADMIN);
 //
@@ -83,18 +87,24 @@ int main(int argc, char * argv[]){
     std::cout << std::endl;
 
 
-    Command *listSeances = new ListSeancesCommand(database, SEATS_PER_ROW, occupiedRooms);
+    Command *listSeances = new ListSeancesCommand(database, &occupiedRooms);
     listSeances->execute();
 
     auto seancesFromDb = (dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec());
 
 //    auto seanceRoom = seancesFromDb.at(0).getShowingRoom();
 //    std::cout << dynamic_cast<CinemaRoom *>(seanceRoom)->getName();
-    for (auto &singleSeance: seancesFromDb){
-        std::cout << singleSeance.getId() << " ";
-        singleSeance.getShowingMovie()->printMovieInfo();
-        std::cout << dynamic_cast<CinemaRoom *>(singleSeance.getShowingRoom())->getName() << std::endl;
+    for (auto &singleSeance: *seancesFromDb){
+        std::cout << singleSeance->getId() << " ";
+        singleSeance->getShowingMovie()->printMovieInfo();
+        std::cout << dynamic_cast<CinemaRoom *>(singleSeance->getShowingRoom())->getName() << std::endl;
+
+        command = new DeleteSeance(database, singleSeance, roomPool, ADMIN);
+        command->execute();
     }
+
+//    command = new DeleteSeance(database, seance, roomPool, ADMIN);
+//    command->execute();
 
     database->close();
 }

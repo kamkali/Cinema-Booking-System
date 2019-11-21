@@ -12,19 +12,14 @@
 
 class ListSeancesCommand: public Command {
 private:
-    Database *DB;
-    std::vector<Seance> seance_vec;
-    int seatsPerRow;
-    std::vector<Room*> occupiedRooms;
-
+    Database *database;
+    std::vector<Seance *> * seance_vec;
+    std::vector<Room*> * occupiedRooms;
 public:
-
-    ListSeancesCommand(Database *db, int seatsPerRow, const std::vector<Room *> &occupiedRooms);
-
+    ListSeancesCommand(Database *db, std::vector<Room *> *occupiedRooms);
     void execute() override;
 
-    const std::vector<Seance> &getSeanceVec() const;
-
+    std::vector<Seance *> *getSeanceVec() const;
 };
 
 
