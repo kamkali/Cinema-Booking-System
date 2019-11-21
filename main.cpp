@@ -61,7 +61,7 @@ int main(int argc, char * argv[]){
     string password;
     int order;
 
-    cout << "Cinema Software 2000" << endl;
+    cout << "Kuglan'n'Kali Cinema" << endl;
 
     cout << "Sign in (1)\nSign up (2)\n" << endl;
     cout << "~: ";
