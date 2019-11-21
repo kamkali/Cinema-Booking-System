@@ -132,13 +132,26 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
 
     } while (order != 0);
 }
+void listMovies(Database *db){
+    Command * showMovies = new ListMoviesCommand(db);
+    showMovies->execute();
+
+    auto moviesList = dynamic_cast<ListMoviesCommand *>(showMovies)->getMoviesVec();
+    for (auto movie: moviesList){
+        movie.printMovieInfo();
+    }
+}
+
+//void showAdminMenu(){
+//    cout <<
+//}
 
 void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
     //order Seats at Seance
     int pick;
     bool menuDummy{true};
     while (menuDummy) {
-        cout << "Please choose: \n(1) Show seances list \n(2) Show movies list "
+        cout << "Welcome to the Kuglan'n'Kali Cinema! Please choose: \n(1) Show seances list \n(2) Show movies list "
                 "\n(3) Exit\n" << endl;
         cout << "~: ";
         cin >> pick;
