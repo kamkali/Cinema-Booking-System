@@ -15,6 +15,7 @@ private:
     std::string username;
     std::string password;
     bool Logged;
+    int userId;
 
 public:
     LoginUserCommand(Database *db, const std::string &username, const std::string &password);
@@ -22,6 +23,8 @@ public:
     void execute() override;
 
     bool isLogged() const;
+
+    int getUserId() const;
 };
 
 

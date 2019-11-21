@@ -25,6 +25,7 @@
 #include "command/RegisterUserCommand.h"
 #include "command/DeleteSeance.h"
 #include "command/OrderSeat.h"
+#include "workflow.h"
 
 #define DATABASE_NAME "cinema"
 #define ADMIN_USERNAME "admin"
@@ -75,7 +76,9 @@ int main(int argc, char * argv[]){
     command->execute();
 
     if(dynamic_cast<LoginUserCommand *>(command)->isLogged()){
+        int userId = dynamic_cast<LoginUserCommand *>(command)->getUserId();
 
+        showUserMenu(db, roomPool, occupiedRooms, SEATS_PER_ROW, userId);
     } else{
         cout << "You are no authorized!" << endl;
         cout << "Closing..." << endl;

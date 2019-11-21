@@ -15,8 +15,10 @@ void LoginUserCommand::execute() {
 
     std::vector<std::vector<std::string> *> *result = DB->execute(USER_SELECT_BY_NAME, args);
 
-    if (result->at(0)->at(2) == password)
+    if (result->at(0)->at(2) == password) {
         Logged = true;
+        userId = std::stoi(result->at(0)->at(0));
+    }
     else
         Logged = false;
 
@@ -25,5 +27,9 @@ void LoginUserCommand::execute() {
 
 bool LoginUserCommand::isLogged() const {
     return Logged;
+}
+
+int LoginUserCommand::getUserId() const {
+    return userId;
 }
 
