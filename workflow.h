@@ -15,7 +15,18 @@
 
 using namespace std;
 
-void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * occupiedRooms){
+void listSeances(Database *db, vector<Room *> occupiedRooms){
+    Command * listSeances = new ListSeancesCommand(db, &occupiedRooms);
+    listSeances->execute();
+    auto castSeances = dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec();
+
+    for (auto seance: *castSeances) {
+        cout << "Seance id: " << seance->getId() << " Playing movie: " << seance->getShowingMovie()->getTitle() <<
+             "in Room: " << dynamic_cast<CinemaRoom *>(seance->getShowingRoom())->getName() << endl;
+    }
+}
+
+void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * occupiedRooms) {
 
     int order;
 
@@ -23,11 +34,12 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
 
         cout << "ADMIN MENU" << endl;
         cout << endl;
-        cout << "1. Create movie" << endl;
-        cout << "2. Delete movie" << endl;
-        cout << "3. Create seance" << endl;
-        cout << "4. Delete seance" << endl;
-        cout << "0. End program" << endl;
+        cout << "(1) Create movie" << endl;
+        cout << "(2) Delete movie" << endl;
+        cout << "(3) Create seance" << endl;
+        cout << "(4) Delete seance" << endl;
+        cout << "(5) List seances" << endl;
+        cout << "(0) End program" << endl;
 
         cout << "~: ";
 
@@ -108,6 +120,9 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
                 command = new DeleteSeance(database, seanceName, roomPool, occupiedRooms, ADMIN);
                 command->execute();
                 break;
+            case 5:
+                listSeances(database, *occupiedRooms);
+                break;
             case 0:
                 break;
             default:
@@ -115,28 +130,15 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
                 break;
         }
 
-    }while(order != 0);
-void listSeances(Database *db, vector<Room *> occupiedRooms){
-    Command * listSeances = new ListSeancesCommand(db, &occupiedRooms);
-    listSeances->execute();
-    auto castSeances = dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec();
-
-    for (auto seance: *castSeances) {
-        cout << "Seance id: " << seance->getId() << " Playing movie: " << seance->getShowingMovie()->getTitle() <<
-             "in Room: " << dynamic_cast<CinemaRoom *>(seance->getShowingRoom())->getName() << endl;
-    }
+    } while (order != 0);
 }
-
-//void showAdminMenu(){
-//    cout <<
-//}
 
 void showUserMenu(Database *db, RoomFactory* roomPool, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
     //order Seats at Seance
     int pick;
     bool menuDummy{true};
     while (menuDummy) {
-        cout << "Welcome to the Kuglan'n'Kali Cinema! Please choose: \n(1) Show seances list \n(2) Show movies list "
+        cout << "Please choose: \n(1) Show seances list \n(2) Show movies list "
                 "\n(3) Exit\n" << endl;
         cout << "~: ";
         cin >> pick;

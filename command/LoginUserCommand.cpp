@@ -22,6 +22,9 @@ void LoginUserCommand::execute() {
     else
         Logged = false;
 
+    if(result->at(0)->at(3) == "ROLE_ADMIN")
+        isAdmin = true;
+
     Database::deleteResult(result);
 }
 
@@ -31,5 +34,9 @@ bool LoginUserCommand::isLogged() const {
 
 int LoginUserCommand::getUserId() const {
     return userId;
+}
+
+bool LoginUserCommand::isUserAdmin() const {
+    return isAdmin;
 }
 

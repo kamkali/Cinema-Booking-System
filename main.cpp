@@ -61,8 +61,9 @@ int main(int argc, char * argv[]){
     string password;
     int order;
 
-    cout << "Kuglan'n'Kali Cinema" << endl;
-
+    cout << "        Kuglan'n'Kali Cinema        " << endl;
+    cout << "____________________________________" << endl;
+    cout << "Welcome to the Kuglan'n'Kali Cinema!" << endl;
     cout << "Sign in (1)\nSign up (2)\n" << endl;
     cout << "~: ";
     cin >> order;
@@ -86,10 +87,15 @@ int main(int argc, char * argv[]){
     command->execute();
 
     if(dynamic_cast<LoginUserCommand *>(command)->isLogged()){
-        int userId = dynamic_cast<LoginUserCommand *>(command)->getUserId();
+        auto * loginUserCommand = dynamic_cast<LoginUserCommand *>(command));
+        int userId = loginUserCommand->getUserId();
+        bool isAdmin = loginUserCommand->isUserAdmin();
 
-        showUserMenu(db, roomPool, occupiedRooms, ROWS_NUMBER, userId);
-        showAdminMenu(db, roomPool, &occupiedRooms);
+        if(isAdmin)
+            showAdminMenu(db, roomPool, &occupiedRooms);
+        else
+            showUserMenu(db, roomPool, occupiedRooms, ROWS_NUMBER, userId);
+
     } else{
         cout << "You are no authorized!" << endl;
         cout << "Closing..." << endl;
