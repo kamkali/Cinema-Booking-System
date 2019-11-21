@@ -53,13 +53,13 @@ int main(int argc, char * argv[]){
 
     std::vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
 
-    for(auto room: occupiedRooms) {
-
-        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
-
-        command->execute();
-
-    }
+//    for(auto room: occupiedRooms) {
+//
+//        command = new ReturnRoom(database, roomPool, room, "ROLE_ADMIN");
+//
+//        command->execute();
+//
+//    }
 
     Command *createMovie = new CreateMovieCommand(database, "Tities", "Brosman_T", 1999, 12, 14.32, "Description", ADMIN);
 
@@ -72,7 +72,7 @@ int main(int argc, char * argv[]){
     Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
 
 //    command = new DeleteSeance(database, seance, roomPool, ADMIN);
-
+//
 //    command->execute();
 
 
@@ -82,17 +82,18 @@ int main(int argc, char * argv[]){
     std::cout << std::endl;
     std::cout << std::endl;
 
-//TODO: need Seances to test it
+
     Command *listSeances = new ListSeancesCommand(database, SEATS_PER_ROW, occupiedRooms);
     listSeances->execute();
 
     auto seancesFromDb = (dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec());
 
-
+//    auto seanceRoom = seancesFromDb.at(0).getShowingRoom();
+//    std::cout << dynamic_cast<CinemaRoom *>(seanceRoom)->getName();
     for (auto &singleSeance: seancesFromDb){
         std::cout << singleSeance.getId() << " ";
         singleSeance.getShowingMovie()->printMovieInfo();
-        std::cout << singleSeance.getShowingRoom() << std::endl;
+        std::cout << dynamic_cast<CinemaRoom *>(singleSeance.getShowingRoom())->getName() << std::endl;
     }
 
     database->close();
