@@ -18,16 +18,21 @@ void ListSeancesCommand::execute() {
 
         std::vector<std::vector<std::string> *> *movie = database->execute(QueryName::MOVIE_SELECT_BY_ID, movieSelectArg);
 
-        std::string title = movie->at(0)->at(1);
-        std::string director = movie->at(0)->at(2);
-        int productionYear = stoi(movie->at(0)->at(3));
-        int price = stoi(movie->at(0)->at(4));
-        double movieLength = stof(movie->at(0)->at(5));
-        std::string movieDescription = movie->at(0)->at(6);
+        Movie * localMovie = nullptr;
+
+        if(!movie->empty()) {
+            std::string title = movie->at(0)->at(1);
+            std::string director = movie->at(0)->at(2);
+            int productionYear = stoi(movie->at(0)->at(3));
+            int price = stoi(movie->at(0)->at(4));
+            double movieLength = stof(movie->at(0)->at(5));
+            std::string movieDescription = movie->at(0)->at(6);
+
+            localMovie = new Movie(movieId, title, director, productionYear, price, movieLength,
+                                         movieDescription);
+        }
 
         Database::deleteResult(movie);
-
-        auto * localMovie = new Movie(movieId, title, director, productionYear, price, movieLength, movieDescription);
 
         std::string roomSelectArg[] = {std::to_string(seanceId)};
 

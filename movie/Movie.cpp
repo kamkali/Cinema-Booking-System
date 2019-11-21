@@ -67,10 +67,10 @@ void Movie::setDescription(const std::string &description) {
 }
 
 void Movie::printMovieInfo() {
-    std::cout << "Tytul: " << Movie::title << ", Rezyser: " << Movie::director << ", Rok produkcji: "
-              << Movie::production_year;
-    std::cout << ", Cena: " << Movie::price << ", Dlugosc filmu: " << Movie::movie_length;
-    std::cout << ", Opis: " << Movie::description << std::endl;
+    std::cout << "Tytul:\t" << Movie::title << "\t\tRezyser:\t" << Movie::director << "\t\tRok produkcji:\t"
+              << Movie::production_year << std::endl;
+    std::cout << "Cena:\t" << Movie::price << "\t\tDlugosc filmu:\t" << Movie::movie_length << std::endl;
+    std::cout << "Opis:\t" << Movie::description << std::endl;
 
 }
 

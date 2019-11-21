@@ -87,7 +87,7 @@ int main(int argc, char * argv[]){
     command->execute();
 
     if(dynamic_cast<LoginUserCommand *>(command)->isLogged()){
-        auto * loginUserCommand = dynamic_cast<LoginUserCommand *>(command));
+        auto * loginUserCommand = dynamic_cast<LoginUserCommand *>(command);
         int userId = loginUserCommand->getUserId();
         bool isAdmin = loginUserCommand->isUserAdmin();
 

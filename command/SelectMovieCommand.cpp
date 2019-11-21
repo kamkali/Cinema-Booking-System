@@ -10,6 +10,11 @@ void SelectMovieCommand::execute() {
     std::string arg[] = {title};
     std::vector<std::vector<std::string> *> *movieList = database->execute(QueryName::MOVIE_SELECT_BY_NAME, arg);
 
+    if(movieList->empty()){
+        movie = nullptr;
+        return;
+    }
+
     std::string titleOfMovie, director, movieDescription;
     int productionYear;
     double price;

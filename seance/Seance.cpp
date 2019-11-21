@@ -76,7 +76,7 @@ void Seance::printSeats(Database *database, int seatsInRow) {
     std::cout << " " << std::endl << "– – – – – – – – – –" << std::endl;
     for (auto seat: checkSeat->getSeats()){
 
-        std::string args[]{std::to_string(this->getId()), std::to_string(seat->getId())};
+        std::string args[]{std::to_string(checkSeat->getId()), std::to_string(seat->getId())};
 
         std::vector<std::vector<std::string> *> *result = database->execute(QueryName::SEAT_SELECT_BY_ROOM_ID_AND_NUMBER_IN_ROOM, args);
 
@@ -86,8 +86,10 @@ void Seance::printSeats(Database *database, int seatsInRow) {
         }
         column++;
 
-        std::cout << result->at(0)->at(2) << " ";
-
+        if(stoi(result->at(0)->at(2)) == 0)
+            std::cout << result->at(0)->at(2) << " ";
+        else
+            std::cout << "x" << " ";
     }
     std::cout << "| "<< ++row << std::endl;
     std::cout << std::endl;

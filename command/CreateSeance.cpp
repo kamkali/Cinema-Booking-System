@@ -16,6 +16,11 @@ void CreateSeance::execute() {
 
     std::vector<std::vector<std::string> *> *seansResult = database->execute(QueryName::SEANS_SELECT_BY_NAME, argSeansSelect);
 
+    if(seansResult->empty()){
+        std::cout << "There is no movie of this title!" << std::endl;
+        return;
+    }
+
     int seanceId = stoi(seansResult->at(0)->at(0));
 
     seance = new Seance(seanceId, movie, room);
