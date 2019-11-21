@@ -24,6 +24,7 @@ public:
     void execute() override;
 
     const std::vector<Seance> &getSeanceVec() const;
+
 };
 
 

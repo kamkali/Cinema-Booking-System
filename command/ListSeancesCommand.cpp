@@ -25,11 +25,10 @@ void ListSeancesCommand::execute() {
                                       std::stoi(seanceMovie->at(0)->at(4)), std::stod(seanceMovie->at(0)->at(5)),
                                       seanceMovie->at(0)->at(6));
 
-//TODO: pick correct room
+        auto mySeanceId = std::stoi(singleSeance->at(0));
         int i{0};
-        for (auto seance: *allSeances) {
-            if(std::stoi(seance->at(0)) == dynamic_cast<CinemaRoom *>(occupiedRooms.at(i))->getId()) {
-//                auto showingRoom = occupiedRooms->at(i);
+        for (auto room: *seanceRoom) {
+            if(mySeanceId == std::stoi(room->at(2))) {
                 break;
             }
             i++;
@@ -51,6 +50,8 @@ ListSeancesCommand::ListSeancesCommand(Database *db, int seatsPerRow, const std:
 const std::vector<Seance> &ListSeancesCommand::getSeanceVec() const {
     return seance_vec;
 }
+
+
 
 
 
