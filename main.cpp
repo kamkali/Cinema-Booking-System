@@ -25,6 +25,7 @@
 #include "command/RegisterUserCommand.h"
 #include "command/DeleteSeance.h"
 #include "command/ListSeancesCommand.h"
+#include "command/SeancePropertiesCommand.h"
 
 #define SEATS_PER_ROW 10
 #define ADMIN "ROLE_ADMIN"
@@ -65,11 +66,11 @@ int main(int argc, char * argv[]){
 
     createMovie->execute();
 
-    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
-
-    command->execute();
-
-    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
+//    command = new CreateSeance(database, "seans 1", roomPool->getInstance(), dynamic_cast<CreateMovieCommand *>(createMovie)->getCreatedMovie());
+//
+//    command->execute();
+//
+//    Seance * seance = dynamic_cast<CreateSeance *>(command)->getSeance();
 
 //    command = new DeleteSeance(database, seance, roomPool, ADMIN);
 //
@@ -82,19 +83,31 @@ int main(int argc, char * argv[]){
     std::cout << std::endl;
     std::cout << std::endl;
 
+    Command *getSeanceProperties = new SeancePropertiesCommand(database, 1, occupiedRooms, SEATS_PER_ROW);
+    getSeanceProperties->execute();
 
-    Command *listSeances = new ListSeancesCommand(database, SEATS_PER_ROW, occupiedRooms);
-    listSeances->execute();
+    auto seancePropFromDb = (dynamic_cast<SeancePropertiesCommand *>(getSeanceProperties)->getSeance());
+//    seancePropFromDb->getShowingMovie()->printMovieInfo();
 
-    auto seancesFromDb = (dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec());
+    seancePropFromDb->printSeats(database, SEATS_PER_ROW);
 
-//    auto seanceRoom = seancesFromDb.at(0).getShowingRoom();
-//    std::cout << dynamic_cast<CinemaRoom *>(seanceRoom)->getName();
-    for (auto &singleSeance: seancesFromDb){
-        std::cout << singleSeance.getId() << " ";
-        singleSeance.getShowingMovie()->printMovieInfo();
-        std::cout << dynamic_cast<CinemaRoom *>(singleSeance.getShowingRoom())->getName() << std::endl;
-    }
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+//    std::cout << dynamic_cast<CinemaRoom *>(seancePropFromDb->getShowingRoom())->getSeats();
+
+//    Command *listSeances = new ListSeancesCommand(database, SEATS_PER_ROW, occupiedRooms);
+//    listSeances->execute();
+//
+//    auto seancesFromDb = (dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec());
+//
+////    auto seanceRoom = seancesFromDb.at(0).getShowingRoom();
+////    std::cout << dynamic_cast<CinemaRoom *>(seanceRoom)->getName();
+//    for (auto &singleSeance: seancesFromDb){
+//        std::cout << singleSeance.getId() << " ";
+//        singleSeance.getShowingMovie()->printMovieInfo();
+//        std::cout << dynamic_cast<CinemaRoom *>(singleSeance.getShowingRoom())->getName() << std::endl;
+//    }
 
     database->close();
 }

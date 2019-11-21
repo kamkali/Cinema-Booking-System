@@ -17,7 +17,6 @@ void ListSeancesCommand::execute() {
 
             std::string movieId[] = {singleSeance->at(2)};
 
-
             std::vector<std::vector<std::string> *> *seanceRoom = DB->execute(ROOM_SELECT_OCCUPIED_ROOMS);
 
             std::vector<std::vector<std::string> *> *seanceMovie = DB->execute(MOVIE_SELECT_BY_ID, movieId);
