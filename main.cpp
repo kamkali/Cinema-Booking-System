@@ -25,11 +25,13 @@
 #include "command/RegisterUserCommand.h"
 #include "command/DeleteSeance.h"
 #include "command/OrderSeat.h"
+#include "workflow.h"
 
 #define DATABASE_NAME "cinema"
 #define ADMIN_USERNAME "admin"
 #define ADMIN_PASSWORD "admin"
-#define SEATS_PER_ROW 10
+#define SEATS_NUMBER 100
+#define ROWS_NUMBER 10
 #define ADMIN "ROLE_ADMIN"
 
 using namespace std;
@@ -45,6 +47,15 @@ int main(int argc, char * argv[]){
     db = dynamic_cast<InitializeCinemaSystem *>(command)->getDatabase();
     command = new InitializeAdminAccount(db, ADMIN_USERNAME, ADMIN_PASSWORD);
     command ->execute();
+    command = new InitializeRooms(db, 10, SEATS_NUMBER, ROWS_NUMBER);
+    command->execute();
+
+    RoomFactory * roomPool = dynamic_cast<InitializeRooms *>(command)->getRoomPool();
+
+    command = new SelectOccupiedRooms(db, SEATS_NUMBER/ROWS_NUMBER);
+    command->execute();
+
+    vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
 
     string login;
     string password;
