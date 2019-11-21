@@ -34,6 +34,7 @@ void QueryLoader::loadQueries() {
             "seat_insert",
             "seat_select_by_room_id",
             "seat_select_by_room_id_and_number_in_room",
+            "seat_update_by_id",
             "seat_update_by_room_id",
             "seats_create",
             "user_delete_by_id",
