@@ -14,6 +14,17 @@
 
 using namespace std;
 
+void listSeances(Database *db, vector<Room *> occupiedRooms){
+    Command * listSeances = new ListSeancesCommand(db, &occupiedRooms);
+    listSeances->execute();
+    auto castSeances = dynamic_cast<ListSeancesCommand *>(listSeances)->getSeanceVec();
+
+    for (auto seance: *castSeances) {
+        cout << "Seance id: " << seance->getId() << " Playing movie: " << seance->getShowingMovie()->getTitle() <<
+             "in Room: " << dynamic_cast<CinemaRoom *>(seance->getShowingRoom())->getName() << endl;
+    }
+}
+
 //void showAdminMenu(){
 //    cout <<
 //}
