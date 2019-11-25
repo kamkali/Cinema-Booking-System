@@ -2,11 +2,11 @@
 // Created by piotr on 17.11.2019.
 //
 
-#include "InitializeAdminAccount.h"
+#include "InitializeAdminAccountCommand.h"
 
 #include <utility>
 
-void InitializeAdminAccount::execute() {
+void InitializeAdminAccountCommand::execute() {
     std::string args[] = {username};
 
     std::vector<std::vector<std::string> *> *result = database->execute(QueryName::USER_SELECT_BY_NAME, args);
@@ -21,6 +21,6 @@ void InitializeAdminAccount::execute() {
     Database::deleteResult(result);
 }
 
-InitializeAdminAccount::InitializeAdminAccount(Database * db, std::string username, std::string password): database(db), username(std::move(username)), password(std::move(password)) {
+InitializeAdminAccountCommand::InitializeAdminAccountCommand(Database * db, std::string username, std::string password): database(db), username(std::move(username)), password(std::move(password)) {
 }
 

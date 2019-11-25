@@ -5,7 +5,7 @@
 #ifndef SIMPLE_EXAMPLE_LOGINUSERCOMMAND_H
 #define SIMPLE_EXAMPLE_LOGINUSERCOMMAND_H
 
-
+#include <iostream>
 #include "../db/Database.h"
 #include "Command.h"
 

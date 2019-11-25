@@ -2,9 +2,9 @@
 // Created by piotr on 17.11.2019.
 //
 
-#include "InitializeRooms.h"
+#include "InitializeRoomsCommand.h"
 
-void InitializeRooms::execute() {
+void InitializeRoomsCommand::execute() {
     std::vector<std::vector<std::string> *> *result = database->execute(QueryName::ROOM_SELECT_ALL);
 
     if((*result).empty()){
@@ -49,11 +49,11 @@ void InitializeRooms::execute() {
     }
 }
 
-InitializeRooms::InitializeRooms(Database *database, size_t roomNumber, size_t seatsNumber, size_t rowsNumber):
+InitializeRoomsCommand::InitializeRoomsCommand(Database *database, size_t roomNumber, size_t seatsNumber, size_t rowsNumber):
         database(database), roomNumber(roomNumber), seatsNumber(seatsNumber), seatsPerRow(rowsNumber) {
     roomPool = new CinemaRoomFactory();
 }
 
-RoomFactory *InitializeRooms::getRoomPool() {
+RoomFactory *InitializeRoomsCommand::getRoomPool() {
     return roomPool;
 }

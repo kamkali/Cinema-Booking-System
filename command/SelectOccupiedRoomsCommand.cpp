@@ -2,10 +2,10 @@
 // Created by piotr on 17.11.2019.
 //
 
-#include "SelectOccupiedRooms.h"
+#include "SelectOccupiedRoomsCommand.h"
 #include "../room/CinemaRoom.h"
 
-void SelectOccupiedRooms::execute() {
+void SelectOccupiedRoomsCommand::execute() {
     std::vector<std::vector<std::string> *> *resultRooms = database->execute(QueryName::ROOM_SELECT_OCCUPIED_ROOMS);
 
     std::vector<std::vector<std::string> *> *seatsResult;
@@ -27,10 +27,10 @@ void SelectOccupiedRooms::execute() {
     }
 }
 
-SelectOccupiedRooms::SelectOccupiedRooms(Database *database, size_t seatsPerRow): database(database), seatsPerRow(seatsPerRow) {
+SelectOccupiedRoomsCommand::SelectOccupiedRoomsCommand(Database *database, size_t seatsPerRow): database(database), seatsPerRow(seatsPerRow) {
     occupiedRooms = std::vector<Room *>();
 }
 
-std::vector<Room *> SelectOccupiedRooms::getOccupiedRooms() {
+std::vector<Room *> SelectOccupiedRoomsCommand::getOccupiedRooms() {
     return occupiedRooms;
 }

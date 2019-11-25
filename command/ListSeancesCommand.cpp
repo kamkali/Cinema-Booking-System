@@ -3,7 +3,7 @@
 //
 
 #include "ListSeancesCommand.h"
-#include "SelectOccupiedRooms.h"
+#include "SelectOccupiedRoomsCommand.h"
 
 
 void ListSeancesCommand::execute() {

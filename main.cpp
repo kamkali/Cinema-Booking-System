@@ -12,20 +12,21 @@
 #include "sqlite/sqlite3.h"
 #include "db/QueryLoader.h"
 #include "command/Command.h"
-#include "command/InitializeAdminAccount.h"
-#include "command/InitializeCinemaSystem.h"
-#include "command/InitializeRooms.h"
-#include "command/ReturnRoom.h"
-#include "command/SelectOccupiedRooms.h"
-#include "command/CreateSeance.h"
+#include "command/InitializeAdminAccountCommand.h"
+#include "command/InitializeCinemaSystemCommand.h"
+#include "command/InitializeRoomsCommand.h"
+#include "command/ReturnRoomCommand.h"
+#include "command/SelectOccupiedRoomsCommand.h"
+#include "command/CreateSeanceCommand.h"
 #include "command/DeleteMovieCommand.h"
 #include "command/ListMoviesCommand.h"
 #include "command/CreateMovieCommand.h"
 #include "command/LoginUserCommand.h"
 #include "command/RegisterUserCommand.h"
-#include "command/DeleteSeance.h"
-#include "command/OrderSeat.h"
+#include "command/DeleteSeanceCommand.h"
+#include "command/OrderSeatCommand.h"
 #include "workflow.h"
+#include "exception/UserNotFoundException.h"
 
 #define DATABASE_NAME "cinema"
 #define ADMIN_USERNAME "admin"
@@ -42,31 +43,40 @@ int main(int argc, char * argv[]){
 
     Command * command;
 
-    command = new InitializeCinemaSystem(DATABASE_NAME);
+    command = new InitializeCinemaSystemCommand(DATABASE_NAME);
     command->execute();
-    db = dynamic_cast<InitializeCinemaSystem *>(command)->getDatabase();
-    command = new InitializeAdminAccount(db, ADMIN_USERNAME, ADMIN_PASSWORD);
+    db = dynamic_cast<InitializeCinemaSystemCommand *>(command)->getDatabase();
+    command = new InitializeAdminAccountCommand(db, ADMIN_USERNAME, ADMIN_PASSWORD);
     command ->execute();
-    command = new InitializeRooms(db, 10, SEATS_NUMBER, ROWS_NUMBER);
+    command = new InitializeRoomsCommand(db, 10, SEATS_NUMBER, ROWS_NUMBER);
     command->execute();
 
-    RoomFactory * roomPool = dynamic_cast<InitializeRooms *>(command)->getRoomPool();
+    RoomFactory * roomPool = dynamic_cast<InitializeRoomsCommand *>(command)->getRoomPool();
 
-    command = new SelectOccupiedRooms(db, SEATS_NUMBER/ROWS_NUMBER);
+    command = new SelectOccupiedRoomsCommand(db, SEATS_NUMBER / ROWS_NUMBER);
     command->execute();
 
-    vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRooms *>(command)->getOccupiedRooms();
+    vector<Room*> occupiedRooms = dynamic_cast<SelectOccupiedRoomsCommand *>(command)->getOccupiedRooms();
 
     string login;
     string password;
-    int order;
+    int order{};
+    string orderString;
 
     cout << "        Kuglan'n'Kali Cinema        " << endl;
     cout << "____________________________________" << endl;
     cout << "Welcome to the Kuglan'n'Kali Cinema!" << endl;
     cout << "Sign in (1)\nSign up (2)\n" << endl;
     cout << "~: ";
-    cin >> order;
+
+    try {
+        cin >> orderString;
+        order = stoi(orderString);
+    }catch (invalid_argument & exc){
+        cerr << "invalid argument: pick proper argument" << endl;
+        return 0;
+    }
+
 
     if(order == 1){
         cout << "Your login: ";
@@ -78,26 +88,36 @@ int main(int argc, char * argv[]){
         command->execute();
     }
 
-    cout << "login: ";
-    cin >> login;
-    cout << "password: ";
-    cin >> password;
+    if(order == 1 || order == 2) {
 
-    command = new LoginUserCommand(db, login, password);
-    command->execute();
+        cout << "login: ";
+        cin >> login;
+        cout << "password: ";
+        cin >> password;
 
-    if(dynamic_cast<LoginUserCommand *>(command)->isLogged()){
-        auto * loginUserCommand = dynamic_cast<LoginUserCommand *>(command);
-        int userId = loginUserCommand->getUserId();
-        bool isAdmin = loginUserCommand->isUserAdmin();
+        try {
+            command = new LoginUserCommand(db, login, password);
+            command->execute();
+        }catch (UserNotFoundException & exc){
+            cerr << exc.what() << endl;
+            return 0;
+        }
 
-        if(isAdmin)
-            showAdminMenu(db, roomPool, &occupiedRooms);
-        else
-            showUserMenu(db, occupiedRooms, ROWS_NUMBER, userId);
+        if (dynamic_cast<LoginUserCommand *>(command)->isLogged()) {
+            auto *loginUserCommand = dynamic_cast<LoginUserCommand *>(command);
+            int userId = loginUserCommand->getUserId();
+            bool isAdmin = loginUserCommand->isUserAdmin();
 
+            if (isAdmin)
+                showAdminMenu(db, roomPool, &occupiedRooms);
+            else
+                showUserMenu(db, occupiedRooms, ROWS_NUMBER, userId);
+
+        } else {
+            cout << "You are no authorized!" << endl;
+            cout << "Closing..." << endl;
+        }
     } else{
-        cout << "You are no authorized!" << endl;
-        cout << "Closing..." << endl;
+        cout << "Choose proper option" << endl;
     }
 }

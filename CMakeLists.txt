@@ -7,17 +7,17 @@ set(SOURCE_FILES main.cpp room/CinemaRoom.cpp room/CinemaRoom.h room/Seat.cpp ro
         movie/Movie.cpp room/Room.cpp room/Room.h seance/Seance.cpp seance/Seance.h room/RoomFactory.h
         room/CinemaRoomFactory.h room/CinemaRoomFactory.cpp db/Database.cpp db/Database.h sqlite/sqlite3.c sqlite/sqlite3.h
         sqlite/sqlite3ext.h db/QueryLoader.cpp db/QueryLoader.h db/QueryParser.cpp db/QueryParser.h exception/InitializeDatabaseException.h
-        command/Command.cpp command/Command.h command/InitializeAdminAccount.cpp command/InitializeAdminAccount.h command/InitializeCinemaSystem.cpp
-        command/InitializeCinemaSystem.h command/InitializeRooms.cpp command/InitializeRooms.h command/ReturnRoom.cpp command/ReturnRoom.h
-        command/SelectOccupiedRooms.cpp command/SelectOccupiedRooms.h command/CreateSeance.cpp command/CreateSeance.h command/RegisterUserCommand.cpp
+        command/Command.cpp command/Command.h command/InitializeAdminAccountCommand.cpp command/InitializeAdminAccountCommand.h command/InitializeCinemaSystemCommand.cpp
+        command/InitializeCinemaSystemCommand.h command/InitializeRoomsCommand.cpp command/InitializeRoomsCommand.h command/ReturnRoomCommand.cpp command/ReturnRoomCommand.h
+        command/SelectOccupiedRoomsCommand.cpp command/SelectOccupiedRoomsCommand.h command/CreateSeanceCommand.cpp command/CreateSeanceCommand.h command/RegisterUserCommand.cpp
         command/RegisterUserCommand.h command/LoginUserCommand.cpp command/LoginUserCommand.h command/CreateMovieCommand.cpp
         command/CreateMovieCommand.h command/DeleteMovieCommand.cpp command/DeleteMovieCommand.h command/ListMoviesCommand.cpp
-        command/ListMoviesCommand.h command/DeleteSeance.cpp command/DeleteSeance.h command/OrderSeat.h command/OrderSeat.cpp
+        command/ListMoviesCommand.h command/DeleteSeanceCommand.cpp command/DeleteSeanceCommand.h command/OrderSeatCommand.h command/OrderSeatCommand.cpp
         command/CreateMovieCommand.h command/DeleteMovieCommand.cpp command/DeleteMovieCommand.h command/ListMoviesCommand.cpp command/ListMoviesCommand.h
-        command/DeleteSeance.cpp command/DeleteSeance.h command/ListSeancesCommand.cpp command/ListSeancesCommand.h
+        command/DeleteSeanceCommand.cpp command/DeleteSeanceCommand.h command/ListSeancesCommand.cpp command/ListSeancesCommand.h
         command/CreateMovieCommand.h command/DeleteMovieCommand.cpp command/DeleteMovieCommand.h command/ListMoviesCommand.cpp
-        command/ListMoviesCommand.h command/DeleteSeance.cpp command/DeleteSeance.h command/ListSeancesCommand.cpp
-        command/ListSeancesCommand.h command/SeancePropertiesCommand.cpp command/SeancePropertiesCommand.h workflow.h command/SelectMovieCommand.cpp command/SelectMovieCommand.h)
+        command/ListMoviesCommand.h command/DeleteSeanceCommand.cpp command/DeleteSeanceCommand.h command/ListSeancesCommand.cpp
+        command/ListSeancesCommand.h command/SeancePropertiesCommand.cpp command/SeancePropertiesCommand.h workflow.h command/SelectMovieCommand.cpp command/SelectMovieCommand.h exception/UserNotFoundException.h)
 
 # Add executable target with source files listed in SOURCE_FILES variable
 add_executable(simple_example ${SOURCE_FILES})

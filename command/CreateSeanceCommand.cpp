@@ -2,11 +2,11 @@
 // Created by piotr on 19.11.2019.
 //
 
-#include "CreateSeance.h"
+#include "CreateSeanceCommand.h"
 
 #include <utility>
 
-void CreateSeance::execute() {
+void CreateSeanceCommand::execute() {
 
     std::string argsSeansInsert[] = {name, std::to_string(movie->getId())};
 
@@ -31,11 +31,11 @@ void CreateSeance::execute() {
     Database::deleteResult(database->execute(QueryName::ROOM_UPDATE_BY_ID, argsRoomUpdate));
 }
 
-Seance *CreateSeance::getSeance() {
+Seance *CreateSeanceCommand::getSeance() {
     return seance;
 }
 
-CreateSeance::CreateSeance(Database *database, std::string name, Room *room, Movie *movie):
+CreateSeanceCommand::CreateSeanceCommand(Database *database, std::string name, Room *room, Movie *movie):
 database(database), name(std::move(name)), room(room), movie(movie) {
     seance = nullptr;
 }

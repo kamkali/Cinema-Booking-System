@@ -2,12 +2,12 @@
 // Created by piotr on 17.11.2019.
 //
 
-#include "ReturnRoom.h"
+#include "ReturnRoomCommand.h"
 #include "../room/CinemaRoom.h"
 
 #include <utility>
 
-void ReturnRoom::execute() {
+void ReturnRoomCommand::execute() {
     if(role == "ROLE_ADMIN") {
         roomPool->returnInstance(room);
 
@@ -37,7 +37,7 @@ void ReturnRoom::execute() {
     }
 }
 
-ReturnRoom::ReturnRoom(Database *database, RoomFactory * roomPool, Room * room, std::string role): database(database),
-roomPool(roomPool), room(room), role(std::move(role)) {
+ReturnRoomCommand::ReturnRoomCommand(Database *database, RoomFactory * roomPool, Room * room, std::string role): database(database),
+                                                                                                                 roomPool(roomPool), room(room), role(std::move(role)) {
 
 }

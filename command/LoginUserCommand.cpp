@@ -3,6 +3,7 @@
 //
 
 #include "LoginUserCommand.h"
+#include "../exception/UserNotFoundException.h"
 
 LoginUserCommand::LoginUserCommand(Database *db, const std::string &username, const std::string &password) : DB(db),
                                                                                                              username(
@@ -14,6 +15,9 @@ void LoginUserCommand::execute() {
     std::string args[] = {username};
 
     std::vector<std::vector<std::string> *> *result = DB->execute(USER_SELECT_BY_NAME, args);
+
+    if(result->empty())
+        throw UserNotFoundException();
 
     if (result->at(0)->at(2) == password) {
         Logged = true;

@@ -2,12 +2,12 @@
 // Created by piotr on 20.11.2019.
 //
 
-#include "DeleteSeance.h"
+#include "DeleteSeanceCommand.h"
 
 #include <utility>
-#include "ReturnRoom.h"
+#include "ReturnRoomCommand.h"
 
-void DeleteSeance::execute() {
+void DeleteSeanceCommand::execute() {
 
     if(role == "ROLE_ADMIN") {
 
@@ -42,7 +42,7 @@ void DeleteSeance::execute() {
             return;
         }
 
-        Command *command = new ReturnRoom(database, roomPool, roomInstance, role);
+        Command *command = new ReturnRoomCommand(database, roomPool, roomInstance, role);
 
         command->execute();
 
@@ -54,5 +54,5 @@ void DeleteSeance::execute() {
     }
 }
 
-DeleteSeance::DeleteSeance(Database *database, std::string seanceName, RoomFactory *roomPool, std::vector<Room*> * occupiedRooms,std::string role)
+DeleteSeanceCommand::DeleteSeanceCommand(Database *database, std::string seanceName, RoomFactory *roomPool, std::vector<Room*> * occupiedRooms, std::string role)
         : database(database), seanceName(seanceName), roomPool(roomPool), occupiedRooms(occupiedRooms), role(std::move(role)) {}

@@ -2,11 +2,11 @@
 // Created by piotr on 17.11.2019.
 //
 
-#include "InitializeCinemaSystem.h"
+#include "InitializeCinemaSystemCommand.h"
 
 #include <utility>
 
-void InitializeCinemaSystem::execute() {
+void InitializeCinemaSystemCommand::execute() {
     QueryLoader queryLoader;
     queryLoader.loadQueries();
     std::map<unsigned int, std::string> queries = queryLoader.getQueries();
@@ -21,10 +21,10 @@ void InitializeCinemaSystem::execute() {
     Database::deleteResult(database->execute(QueryName::SEANSES_CREATE));
 }
 
-InitializeCinemaSystem::InitializeCinemaSystem(std::string databaseName): databaseName(std::move(databaseName)) {
+InitializeCinemaSystemCommand::InitializeCinemaSystemCommand(std::string databaseName): databaseName(std::move(databaseName)) {
     database = nullptr;
 }
 
-Database *InitializeCinemaSystem::getDatabase() {
+Database *InitializeCinemaSystemCommand::getDatabase() {
     return database;
 }

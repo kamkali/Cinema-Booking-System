@@ -2,9 +2,9 @@
 // Created by piotr on 20.11.2019.
 //
 
-#include "OrderSeat.h"
+#include "OrderSeatCommand.h"
 
-void OrderSeat::execute() {
+void OrderSeatCommand::execute() {
     int roomId = dynamic_cast<CinemaRoom *>(seance->getShowingRoom())->getId();
 
     std::string args[]{std::to_string(roomId), std::to_string(numberOfSeat)};
@@ -24,7 +24,7 @@ void OrderSeat::execute() {
     Database::deleteResult(result);
 }
 
-OrderSeat::OrderSeat(Database *database, Seance *seance, int numberOfSeat, int userId) : database(database),
-                                                                                         seance(seance),
-                                                                                         numberOfSeat(numberOfSeat),
-                                                                                         userId(userId) {}
+OrderSeatCommand::OrderSeatCommand(Database *database, Seance *seance, int numberOfSeat, int userId) : database(database),
+                                                                                                       seance(seance),
+                                                                                                       numberOfSeat(numberOfSeat),
+                                                                                                       userId(userId) {}

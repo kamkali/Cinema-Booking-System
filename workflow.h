@@ -10,7 +10,7 @@
 #include "room/RoomFactory.h"
 #include "command/Command.h"
 #include "command/ListSeancesCommand.h"
-#include "command/OrderSeat.h"
+#include "command/OrderSeatCommand.h"
 #include "command/SelectMovieCommand.h"
 
 using namespace std;
@@ -46,7 +46,8 @@ void listMovies(Database *db){
 
 void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * occupiedRooms) {
 
-    int order;
+    int order{};
+    string orderString;
 
     do {
 
@@ -62,7 +63,13 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
 
         cout << "~: ";
 
-        cin >> order;
+        try {
+            cin >> orderString;
+            order = stoi(orderString);
+        }catch (invalid_argument & exc){
+            cerr << "invalid argument: pick proper argument" << endl;
+            continue;
+        }
 
         Command *command;
         Movie *movie;
@@ -129,7 +136,7 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
                 room = roomPool->getInstance();
                 occupiedRooms->push_back(room);
 
-                command = new CreateSeance(database, seanceName, room, movie);
+                command = new CreateSeanceCommand(database, seanceName, room, movie);
                 command->execute();
 
                 cout << "Seance has been created!" << endl;
@@ -141,7 +148,7 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
                 cout << "Seance name: ";
                 cin >> seanceName;
 
-                command = new DeleteSeance(database, seanceName, roomPool, occupiedRooms, ADMIN);
+                command = new DeleteSeanceCommand(database, seanceName, roomPool, occupiedRooms, ADMIN);
                 command->execute();
                 break;
             case 6:
@@ -161,13 +168,21 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
 }
 
 void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,int userId){
-    int pick;
+    int pick{};
+    string orderString;
     bool menuDummy{true};
     while (menuDummy) {
         cout << "Welcome to the Kuglan'n'Kali Cinema! Please choose: \n(1) Show seances list \n(2) Show movies list "
                 "\n(3) Exit\n" << endl;
         cout << "~: ";
-        cin >> pick;
+
+        try {
+            cin >> orderString;
+            pick = stoi(orderString);
+        }catch (invalid_argument & exc){
+            cerr << "invalid argument: pick proper argument" << endl;
+            continue;
+        }
 
         if (pick == 1) {
             Command * listSeances = new ListSeancesCommand(db, &occupiedRooms);
@@ -184,7 +199,13 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                     cout << "Options: \n(1) Print movie info\n(2) Print seats\n(3) Place order\n(4) continue\n(5) exit\n" << endl;
                     cout << "~: ";
 
-                    cin >> pick;
+                    try {
+                        cin >> orderString;
+                        pick = stoi(orderString);
+                    }catch (invalid_argument & exc){
+                        cerr << "invalid argument: pick proper argument" << endl;
+                        break;
+                    }
 
                     switch(pick)
                     {
@@ -210,7 +231,7 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                             cout << "~: ";
                             cin >> seatNumberRow;
 
-                            Command * placeOrder = new OrderSeat(db, seance, (seatNumberRow*10+seatNumberColumn)-10, userId);
+                            Command * placeOrder = new OrderSeatCommand(db, seance, (seatNumberRow * 10 + seatNumberColumn) - 10, userId);
                             placeOrder->execute();
                             cout << "Order has been placed!" << endl;
                         }
@@ -238,6 +259,8 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
             }
         } else if (pick == 3) {
             menuDummy = false;
+        } else{
+            cout << "Choose proper option!" << endl;
         }
     }
 }

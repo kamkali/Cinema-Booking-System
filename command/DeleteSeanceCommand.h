@@ -2,8 +2,8 @@
 // Created by piotr on 20.11.2019.
 //
 
-#ifndef SIMPLE_EXAMPLE_DELETESEANCE_H
-#define SIMPLE_EXAMPLE_DELETESEANCE_H
+#ifndef SIMPLE_EXAMPLE_DELETESEANCECOMMAND_H
+#define SIMPLE_EXAMPLE_DELETESEANCECOMMAND_H
 
 
 #include "Command.h"
@@ -11,7 +11,7 @@
 #include "../seance/Seance.h"
 #include "../room/RoomFactory.h"
 
-class DeleteSeance: public Command {
+class DeleteSeanceCommand: public Command {
 private:
     Database * database;
     std::string seanceName;
@@ -19,9 +19,9 @@ private:
     std::vector<Room *> * occupiedRooms;
     std::string role;
 public:
-    DeleteSeance(Database *database, std::string seanceName, RoomFactory *roomPool, std::vector<Room*> * occupiedRooms, std::string role);
+    DeleteSeanceCommand(Database *database, std::string seanceName, RoomFactory *roomPool, std::vector<Room*> * occupiedRooms, std::string role);
     void execute() override;
 };
 
 
-#endif //SIMPLE_EXAMPLE_DELETESEANCE_H
+#endif //SIMPLE_EXAMPLE_DELETESEANCECOMMAND_H
