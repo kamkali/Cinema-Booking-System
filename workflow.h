@@ -75,11 +75,11 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
         Movie *movie;
         Room *room;
 
-        string title, director, movieDescription;
+        string title, director, movieDescription, seanceName, productionYear_s, price_s, movieLength_s;
         int productionYear;
         double price;
         double movieLength;
-        string seanceName;
+
 
         switch (order) {
             case 1:
@@ -89,14 +89,33 @@ void showAdminMenu(Database * database, RoomFactory * roomPool, vector<Room*> * 
                 cin >> title;
                 cout << "Director: ";
                 cin >> director;
-                cout << "Production year: ";
-                cin >> productionYear;
-                cout << "Length: ";
-                cin >> movieLength;
                 cout << "Description: ";
                 cin >> movieDescription;
-                cout << "Price: ";
-                cin >> price;
+
+                try {
+                    cout << "Production year: ";
+                    cin >> productionYear_s;
+                    productionYear = stoi(productionYear_s);
+                }catch (invalid_argument & exc){
+                    cerr << "invalid argument: pick proper argument" << endl;
+                    continue;
+                }
+                try {
+                    cout << "Length: ";
+                    cin >> movieLength_s;
+                    movieLength = stod(movieLength_s);
+                }catch (invalid_argument & exc){
+                    cerr << "invalid argument: pick proper argument" << endl;
+                    continue;
+                }
+                try {
+                    cout << "Price: ";
+                    cin >> price_s;
+                    price = stod(price_s);
+                }catch (invalid_argument & exc){
+                    cerr << "invalid argument: pick proper argument" << endl;
+                    continue;
+                }
 
                 command = new CreateMovieCommand(database, title, director, productionYear, price, movieLength,
                                                  movieDescription, ADMIN);
