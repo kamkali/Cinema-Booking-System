@@ -9,7 +9,7 @@
 
 struct UserNotFoundException: public std::exception{
 public:
-    const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_USE_NOEXCEPT{
+    const char* what() const _NOEXCEPT{
         return "User has not been found!";
     }
 };
