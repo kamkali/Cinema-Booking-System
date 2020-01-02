@@ -25,28 +25,6 @@ public:
 
     const std::string &getTitle() const;
 
-    void setTitle(const std::string &title);
-
-    const std::string &getDirector() const;
-
-    void setDirector(const std::string &director);
-
-    int getProductionYear() const;
-
-    void setProductionYear(int productionYear);
-
-    int getPrice() const;
-
-    void setPrice(int price);
-
-    double getMovieLength() const;
-
-    void setMovieLength(double movieLength);
-
-    const std::string &getDescription() const;
-
-    void setDescription(const std::string &description);
-
     void printMovieInfo();
 
     int getId() const;
