@@ -240,15 +240,27 @@ void showUserMenu(Database *db, vector<Room *> occupiedRooms, int seatsPerRow,in
                             break;
                         case 3:
                         {
+                            string seatNumberRow_s, seatNumberColumn_s;
                             int seatNumberRow, seatNumberColumn;
                             seance->printSeats(db, seatsPerRow);
 
                             cout << "Please pick a free seat(Column, then Row): \n" << endl;
                             cout << "~: ";
-                            cin >> seatNumberColumn;
-
+                            try {
+                                cin >> seatNumberColumn_s;
+                                seatNumberColumn = stoi(seatNumberColumn_s);
+                            }catch (invalid_argument & exc){
+                                cerr << "invalid argument: pick proper argument" << endl;
+                                continue;
+                            }
                             cout << "~: ";
-                            cin >> seatNumberRow;
+                            try {
+                                cin >> seatNumberRow_s;
+                                seatNumberRow = stoi(seatNumberRow_s);
+                            }catch (invalid_argument & exc){
+                                cerr << "invalid argument: pick proper argument" << endl;
+                                continue;
+                            }
 
                             Command * placeOrder = new OrderSeatCommand(db, seance, (seatNumberRow * 10 + seatNumberColumn) - 10, userId);
                             placeOrder->execute();

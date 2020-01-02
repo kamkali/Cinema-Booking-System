@@ -19,28 +19,6 @@ Seance::Seance(int id, Movie *showingMovie, Room *showingRoom) : id(id), showing
                                                                  showingRoom(showingRoom) {
 }
 
-
-void Seance::playCommercial() {
-    cout << "#########################  REKLAMA  #########################" << endl;
-    cout << "#                    _                                      #" << endl;
-    cout << "#                  -=\\`\\                                    #" << endl;
-    cout << R"(#              |\ ____\_\__                                 #)" << endl;
-    cout << R"(#            -=\c`""""""" "`)                               #)" << endl;
-    cout << "#               `~~~~~/ /~~`\\                                #" << endl;
-    cout << "#                 -==/ /                                    #" << endl;
-    cout << "#                   '-'                                     #" << endl;
-    cout << "#                  _  _                                     #" << endl;
-    cout << "#                 ( `   )_                                  #" << endl;
-    cout << "#                (    )    `)                               #" << endl;
-    cout << "#              (_   (_ .  _) _)                             #" << endl;
-    cout << "#                                             _             #" << endl;
-    cout << "#                                            (  )           #" << endl;
-    cout << "#             _ .                         ( `  ) . )        #" << endl;
-    cout << "#           (  _ )_                      (_, _(  ,_)_)      #" << endl;
-    cout << "#         (_  _(_ ,)                                        #" << endl;
-    cout << "LINIE LOTNICZE KUGLAN&KALI AIRLINES >>>>> KUP BILET NA STRONIE WWW.KUGLANKALIS.COM" << endl;
-}
-
 int Seance::getId() const {
     return id;
 }
