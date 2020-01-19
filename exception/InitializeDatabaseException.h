@@ -9,7 +9,7 @@
 
 struct InitializeDatabaseException : public std::exception
 {
-    const char * what () const noexcept override
+    const char * what ()// const noexcept override
     {
         return "Initialized database error";
     }
