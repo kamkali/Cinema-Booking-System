@@ -13,10 +13,11 @@
 class CreateSeanceCommand: public Command {
 private:
     Database * database;
+    std::string name;
     Seance * seance;
     Room * room;
     Movie * movie;
-    std::string name;
+
 
 public:
     CreateSeanceCommand(Database * database, std::string name, Room * room, Movie * movie);

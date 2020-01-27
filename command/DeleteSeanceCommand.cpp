@@ -29,7 +29,7 @@ void DeleteSeanceCommand::execute() {
 
         CinemaRoom * roomInstance = nullptr;
 
-        for(int i = 0; i < occupiedRooms->size(); i++){
+        for(unsigned int i = 0; i < occupiedRooms->size(); i++){
             roomInstance = dynamic_cast<CinemaRoom *>(occupiedRooms->at(i));
             if(roomInstance->getId() == roomId) {
                 occupiedRooms->erase(occupiedRooms->begin()+i);

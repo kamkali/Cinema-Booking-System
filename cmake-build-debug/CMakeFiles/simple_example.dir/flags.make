@@ -9,7 +9,7 @@ C_DEFINES =
 
 C_INCLUDES = 
 
-CXX_FLAGS = -g   -pthread -std=gnu++1z
+CXX_FLAGS = -g -Wall   -pthread -std=gnu++1z
 
 CXX_DEFINES = 
 

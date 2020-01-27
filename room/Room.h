@@ -15,7 +15,10 @@ class Room{
 public:
     Room() = default;
 
-    virtual std::vector<Seat *> & getSeats() {};
+    virtual std::vector<Seat *> & getSeats() {
+        std::vector<Seat *> a;
+        return a;
+    };
 };
 
 #endif //SIMPLE_EXAMPLE_ROOM_H
