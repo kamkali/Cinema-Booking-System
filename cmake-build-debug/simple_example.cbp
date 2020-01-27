@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="simple_example"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple_example">
+				<Option output="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/simple_example" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 simple_example"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple_example/fast">
+				<Option output="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/simple_example" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 simple_example/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/Command.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/Command.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/CreateMovieCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/CreateMovieCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/CreateSeanceCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/CreateSeanceCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/DeleteMovieCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/DeleteMovieCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/DeleteSeanceCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/DeleteSeanceCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/InitializeAdminAccountCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/InitializeAdminAccountCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/InitializeCinemaSystemCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/InitializeCinemaSystemCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/InitializeRoomsCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/InitializeRoomsCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/ListMoviesCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/ListMoviesCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/ListSeancesCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/ListSeancesCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/LoginUserCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/LoginUserCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/OrderSeatCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/OrderSeatCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/RegisterUserCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/RegisterUserCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/ReturnRoomCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/ReturnRoomCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/SeancePropertiesCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/SeancePropertiesCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/SelectMovieCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/SelectMovieCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/SelectOccupiedRoomsCommand.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/command/SelectOccupiedRoomsCommand.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/db/Database.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/db/Database.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/db/QueryLoader.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/db/QueryLoader.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/db/QueryParser.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/db/QueryParser.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/exception/InitializeDatabaseException.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/exception/UserNotFoundException.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/main.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/movie/Movie.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/movie/Movie.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/CinemaRoom.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/CinemaRoom.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/CinemaRoomFactory.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/CinemaRoomFactory.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/Room.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/Room.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/RoomFactory.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/Seat.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/room/Seat.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/seance/Seance.cpp">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/seance/Seance.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/sqlite/sqlite3.c">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/sqlite/sqlite3.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/sqlite/sqlite3ext.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/workflow.h">
+			<Option target="simple_example"/>
+		</Unit>
+		<Unit filename="/home/piotr/CLionProjects/JPO_Projekt/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

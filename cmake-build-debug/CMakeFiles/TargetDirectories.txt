@@ -1,0 +1,3 @@
+/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/CMakeFiles/simple_example.dir
+/home/piotr/CLionProjects/JPO_Projekt/cmake-build-debug/CMakeFiles/edit_cache.dir
