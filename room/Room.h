@@ -16,8 +16,8 @@ public:
     Room() = default;
 
     virtual std::vector<Seat *> & getSeats() {
-        std::vector<Seat *> a;
-        return a;
+        std::vector<Seat *> *a = new std::vector<Seat *>;
+        return *a;
     };
 };
 

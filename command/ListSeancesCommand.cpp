@@ -44,7 +44,7 @@ void ListSeancesCommand::execute() {
 
         Seance * seance;
 
-        int i{0};
+        unsigned int i{0};
         for(i = 0; i < occupiedRooms->size(); i++){
             auto * room = dynamic_cast<CinemaRoom *>(occupiedRooms->at(i));
             if(room->getId() == roomId){
